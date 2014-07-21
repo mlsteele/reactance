@@ -1,10 +1,10 @@
 .PHONY: build watch
 
 build:
-	browserify index.js --transform reactify --outfile bundle.js --debug
+	browserify scripts/index.js --transform reactify --outfile scripts/bundle.js --debug
 
 watch:
-	watchify index.js --transform reactify --outfile bundle.js --debug
+	watchify scripts/index.js --transform reactify --outfile scripts/bundle.js --debug
 
 less:
 	lessc styles/index.less styles/bundle.css
