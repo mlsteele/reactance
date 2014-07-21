@@ -1,28 +1,30 @@
 var ReactanceApp = require('./reactance-app.jsx')
 var RolesPage = require('./roles-page.jsx')
-var DataStore = require('./datastore.jsx')
+var AppState = require('./datastore')
 
-var playerNames = []
-playerNames.push('Miles')
-playerNames.push('Jess')
-playerNames.push('Brandon')
-playerNames.push('Ciara')
-playerNames.push('Chris')
+var appstate = new AppState()
+window.appstate = appstate
 
-var onClickShow = function(name) {
-    console.log("click show", name)
+appstate.addPlayer('Miles')
+appstate.addPlayer('Jess')
+appstate.addPlayer('Brandon')
+appstate.addPlayer('Ciara')
+appstate.addPlayer('Chris')
+
+var renderApp = function() {
+    React.renderComponent(
+        RolesPage({
+            mode: appstate.displayMode,
+            playerNames: appstate.playerNames,
+            selectedPlayer: appstate.selectedPlayer,
+            onClickShow: appstate.selectPlayer.bind(appstate),
+            onClickConfirm: appstate.confirmPlayer.bind(appstate),
+            onClickCancel: appstate.deselectPlayer.bind(appstate),
+            onClickOk: appstate.deselectPlayer.bind(appstate),
+        }),
+        document.getElementById('app')
+    );
 }
 
-var onClickConfirm = function(name) {
-    console.log("click confirm", name)
-}
-
-React.renderComponent(
-    RolesPage({
-        mode: 'list',
-        playerNames: playerNames,
-        selectedPlayer: null,
-        onClickShow: onClickShow,
-    }),
-    document.getElementById('app')
-);
+renderApp()
+appstate.on('change', renderApp)

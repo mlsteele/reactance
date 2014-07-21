@@ -2,7 +2,7 @@
 
 var PT = React.PropTypes
 
-module.exports = React.createClass({
+var PlayerList = React.createClass({
     propTypes: {
         playerNames: PT.array.isRequired,
         onClickShow: PT.func.isRequired,
@@ -22,3 +22,5 @@ module.exports = React.createClass({
         return <ul>{elements}</ul>
     },
 });
+
+module.exports = PlayerList

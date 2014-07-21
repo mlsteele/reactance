@@ -4,6 +4,7 @@
   "description": "Resistance game.",
   "main": "index.js",
   "dependencies": {
+    "backbone-events-standalone": "^0.2.2",
     "browserify": "^4.2.3",
     "reactify": "^0.14.0",
     "watchify": "^0.10.2"
