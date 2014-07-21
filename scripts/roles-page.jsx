@@ -25,7 +25,8 @@ var RolesPage = React.createClass({
                 confirmed={this.props.mode === 'role'}
                 playerName={this.props.selectedPlayer}
                 onClickConfirm={this.props.onClickConfirm}
-                onClickCancel={this.props.onClickCancel} />
+                onClickCancel={this.props.onClickCancel}
+                onClickBack={this.props.onClickCancel} />
         }
     },
 });

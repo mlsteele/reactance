@@ -8,19 +8,26 @@ var RoleCard = React.createClass({
         playerName: PT.string.isRequired,
         onClickConfirm: PT.func.isRequired,
         onClickCancel: PT.func.isRequired,
+        onClickBack: PT.func.isRequired,
     },
 
     render: function() {
         if (this.props.confirmed) {
-            return <p>You're a spy!</p>
+            return <div>
+                <p>You're a spy!</p>
+                <button
+                    onClick={this.onClickBack}>
+                    Back
+                </button>
+            </div>
         } else {
             return <div>
                 <p>Are you {this.props.playerName}</p>
-                <button 
+                <button
                     onClick={this.onClickConfirm}>
                     Yes
                 </button>
-                <button 
+                <button
                     onClick={this.onClickCancel}>
                     No
                 </button>
@@ -34,6 +41,10 @@ var RoleCard = React.createClass({
 
     onClickCancel: function() {
         this.props.onClickCancel()
+    },
+
+    onClickBack: function() {
+        this.props.onClickBack()
     },
 });
 
