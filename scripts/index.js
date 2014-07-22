@@ -1,5 +1,6 @@
 var ReactanceApp = require('./reactance-app.jsx')
 var RolesPage = require('./roles-page.jsx')
+var SetupPage = require('./setup-page.jsx')
 var AppState = require('./datastore')
 
 var appstate = new AppState()
@@ -12,15 +13,25 @@ appstate.addPlayer('Ciara')
 appstate.addPlayer('Chris')
 
 var renderApp = function() {
+    // React.renderComponent(
+        // RolesPage({
+            // mode: appstate.displayMode,
+            // playerNames: appstate.playerNames,
+            // selectedPlayer: appstate.selectedPlayer,
+            // onClickShow: appstate.selectPlayer.bind(appstate),
+            // onClickConfirm: appstate.confirmPlayer.bind(appstate),
+            // onClickCancel: appstate.deselectPlayer.bind(appstate),
+            // onClickOk: appstate.deselectPlayer.bind(appstate),
+        // }),
+        // document.getElementById('app')
+    // );
+
     React.renderComponent(
-        RolesPage({
-            mode: appstate.displayMode,
+        SetupPage({
             playerNames: appstate.playerNames,
-            selectedPlayer: appstate.selectedPlayer,
-            onClickShow: appstate.selectPlayer.bind(appstate),
-            onClickConfirm: appstate.confirmPlayer.bind(appstate),
-            onClickCancel: appstate.deselectPlayer.bind(appstate),
-            onClickOk: appstate.deselectPlayer.bind(appstate),
+            merlin: false,
+            onAddName: appstate.addPlayer.bind(appstate),
+            onDeleteName: appstate.deletePlayer.bind(appstate),
         }),
         document.getElementById('app')
     );

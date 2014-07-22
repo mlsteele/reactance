@@ -13,6 +13,11 @@ AppState.prototype.addPlayer = function(name) {
     this.trigger('change')
 }
 
+AppState.prototype.deletePlayer = function(name) {
+    this.playerNames = _.without(this.playerNames, name)
+    this.trigger('change')
+}
+
 AppState.prototype.selectPlayer = function(name) {
     console.log('selecting', name)
     this.selectedPlayer = name
