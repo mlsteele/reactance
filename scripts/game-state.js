@@ -21,8 +21,13 @@ function GameState(dispatcher) {
 GameState.actions = {}
 
 GameState.actions.addPlayer = function(payload) {
-    this.playerNames.push(payload.name)
-    this._emitChange()
+    var name = payload.name
+    if (!_.contains(this.playerNames, name)) {
+        this.playerNames.push(name)
+        this._emitChange()
+    } else {
+        console.log("ignoring duplicate name", name)
+    }
 }
 
 GameState.actions.deletePlayer = function(payload) {
