@@ -15,11 +15,11 @@ var RolesPage = React.createClass({
     },
 
     render: function() {
-        return <div>
+        return <div onClick={this.onChangeMerlin}>
             <input
                 type="checkbox"
-                checked={this.props.settings.merlin}
-                onChange={this.onChangeMerlin} >
+                readOnly={true}
+                checked={this.props.settings.merlin}>
                 Merlin
             </input>
         </div>
@@ -27,7 +27,7 @@ var RolesPage = React.createClass({
 
     onChangeMerlin: function() {
         this.props.onChangeSettings({
-            merlin: event.target.checked,
+            merlin: !this.props.settings.merlin
         })
     },
 });
