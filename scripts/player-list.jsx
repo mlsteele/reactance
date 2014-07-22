@@ -1,5 +1,6 @@
 /** @jsx React.DOM */
 
+var NewName = require('./new-name.jsx')
 var PT = React.PropTypes
 
 var PlayerList = React.createClass({
@@ -7,13 +8,23 @@ var PlayerList = React.createClass({
         playerNames: PT.array.isRequired,
         onClickShow: PT.func,
         onDeleteName: PT.func,
+        onAddName: PT.func,
     },
 
     render: function() {
         var elements = this.props.playerNames.map(
-            this.renderName.bind(this))
+            this.renderName)
 
-        return <ul>{elements}</ul>
+        var newname = null
+        if (this.props.onAddName) {
+            newname = <NewName
+                onAddName={this.props.onAddName} />
+        }
+
+        return <div>
+            <ul>{elements}</ul>
+            {newname}
+        </div>
     },
 
     renderName: function(name) {
@@ -38,12 +49,12 @@ var PlayerList = React.createClass({
                 Delete</button>
         }
 
-        return <li>
+        return <li key={name}>
             <span>{name}</span>
             {showButton}
             {deleteButton}
         </li>
-    }
+    },
 });
 
 module.exports = PlayerList

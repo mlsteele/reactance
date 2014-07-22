@@ -18,6 +18,7 @@ var SetupPage = React.createClass({
         return <div>
             <PlayerList
                 playerNames={this.props.playerNames}
+                onAddName={this.props.onAddName}
                 onDeleteName={this.props.onDeleteName} />
             <Settings
                 settings={this.props.settings}
