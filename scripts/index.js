@@ -17,35 +17,35 @@ dispatch({action: 'addPlayer', name: 'Ciara'})
 dispatch({action: 'addPlayer', name: 'Chris'})
 
 var renderApp = function() {
-    // React.renderComponent(
-        // RolesPage({
-            // mode: uistate.displayMode,
-            // playerNames: gamestate.playerNames,
-            // selectedPlayer: uistate.selectedPlayer,
-            // onClickShow:    dispatcher.bake('selectPlayer', 'name'),
-            // onClickConfirm: dispatcher.bake('confirmPlayer', 'name'),
-            // onClickCancel:  dispatcher.bake('deselectPlayer'),
-            // onClickOk:      dispatcher.bake('deselectPlayer', 'name'),
-        // }),
-        // document.getElementById('app')
-    // );
-
     React.renderComponent(
-        SetupPage({
+        RolesPage({
+            mode: uistate.displayMode,
             playerNames: gamestate.playerNames,
-            settings: gamestate.settings,
-            onAddName: dispatcher.bake('addPlayer', 'name'),
-            onAddName: function(name) {
-                dispatch({
-                    action: 'addPlayer',
-                    name: name.charAt(0).toUpperCase() + name.slice(1),
-                })
-            },
-            onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
-            onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
+            selectedPlayer: uistate.selectedPlayer,
+            onClickShow:    dispatcher.bake('selectPlayer', 'name'),
+            onClickConfirm: dispatcher.bake('confirmPlayer', 'name'),
+            onClickCancel:  dispatcher.bake('deselectPlayer'),
+            onClickOk:      dispatcher.bake('deselectPlayer', 'name'),
         }),
         document.getElementById('app')
     );
+
+    // React.renderComponent(
+        // SetupPage({
+            // playerNames: gamestate.playerNames,
+            // settings: gamestate.settings,
+            // onAddName: function(name) {
+                // dispatch({
+                    // action: 'addPlayer',
+                    // name: name.charAt(0).toUpperCase() + name.slice(1),
+                // })
+            // },
+            // onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
+            // onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
+        // }),
+        // document.getElementById('app')
+    // )
+
 }
 
 renderApp()

@@ -18,16 +18,14 @@ function UIState(dispatcher) {
 
 UIState.actions = {}
 
-UIState.actions.selectPlayer = function(payload) {
-    var name = payload.name
+UIState.actions.selectPlayer = function({name}) {
     console.log('selecting', name)
     this.selectedPlayer = name
     this.displayMode = 'confirm'
     this._emitChange()
 }
 
-UIState.actions.confirmPlayer = function(payload) {
-    var name = payload.name
+UIState.actions.confirmPlayer = function({name}) {
     console.log('confirming', name)
     this.selectedPlayer = name
     this.displayMode = 'role'

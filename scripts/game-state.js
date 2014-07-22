@@ -20,8 +20,7 @@ function GameState(dispatcher) {
 
 GameState.actions = {}
 
-GameState.actions.addPlayer = function(payload) {
-    var name = payload.name
+GameState.actions.addPlayer = function({name}) {
     if (!_.contains(this.playerNames, name)) {
         this.playerNames.push(name)
         this._emitChange()
@@ -30,12 +29,12 @@ GameState.actions.addPlayer = function(payload) {
     }
 }
 
-GameState.actions.deletePlayer = function(payload) {
-    this.playerNames = _.without(this.playerNames, payload.name)
+GameState.actions.deletePlayer = function({name}) {
+    this.playerNames = _.without(this.playerNames, name)
     this._emitChange()
 }
 
-GameState.actions.changeSettings = function(payload) {
-    _.extend(this.settings, payload.settings)
+GameState.actions.changeSettings = function({settings}) {
+    _.extend(this.settings, settings)
     this._emitChange()
 }
