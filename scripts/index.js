@@ -1,16 +1,18 @@
 var ReactanceApp = require('./reactance-app.jsx')
 var RolesPage = require('./roles-page.jsx')
 var SetupPage = require('./setup-page.jsx')
+var Dispatcher = require('./dispatcher')
 var AppState = require('./app-state')
 
-var appstate = new AppState()
-window.appstate = appstate
+var dispatcher = new Dispatcher()
+var dispatch = dispatcher.dispatch.bind(dispatcher)
+var appstate = new AppState(dispatcher)
 
-appstate.addPlayer('Miles')
-appstate.addPlayer('Jess')
-appstate.addPlayer('Brandon')
-appstate.addPlayer('Ciara')
-appstate.addPlayer('Chris')
+dispatch({action: 'addPlayer', name: 'Miles'})
+dispatch({action: 'addPlayer', name: 'Jess'})
+dispatch({action: 'addPlayer', name: 'Brandon'})
+dispatch({action: 'addPlayer', name: 'Ciara'})
+dispatch({action: 'addPlayer', name: 'Chris'})
 
 var renderApp = function() {
     // React.renderComponent(
@@ -18,10 +20,10 @@ var renderApp = function() {
             // mode: appstate.displayMode,
             // playerNames: appstate.playerNames,
             // selectedPlayer: appstate.selectedPlayer,
-            // onClickShow: appstate.selectPlayer.bind(appstate),
-            // onClickConfirm: appstate.confirmPlayer.bind(appstate),
-            // onClickCancel: appstate.deselectPlayer.bind(appstate),
-            // onClickOk: appstate.deselectPlayer.bind(appstate),
+            // onClickShow:    dispatcher.bake('selectPlayer', 'name'),
+            // onClickConfirm: dispatcher.bake('confirmPlayer', 'name'),
+            // onClickCancel:  dispatcher.bake('deselectPlayer'),
+            // onClickOk:      dispatcher.bake('deselectPlayer', 'name'),
         // }),
         // document.getElementById('app')
     // );
@@ -30,9 +32,9 @@ var renderApp = function() {
         SetupPage({
             playerNames: appstate.playerNames,
             settings: appstate.settings,
-            onAddName: appstate.addPlayer.bind(appstate),
-            onDeleteName: appstate.deletePlayer.bind(appstate),
-            onChangeSettings: appstate.changeSettings.bind(appstate),
+            onAddName: dispatcher.bake('addPlayer', 'name'),
+            onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
+            onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
         }),
         document.getElementById('app')
     );
