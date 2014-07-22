@@ -12,22 +12,22 @@ var NewName = React.createClass({
     },
 
     render: function() {
-        return <div>
+        return <form onSubmit={this.onSubmit}>
             <input type="text"
                 value={this.state.text}
                 onChange={this.onChange}
                 ></input>
-            <button
-                onClick={this.onClickAdd} >
+            <button>
                 Add {this.state.text}</button>
-        </div>
+        </form>
     },
 
     onChange: function(e) {
         this.setState({text: e.target.value})
     },
 
-    onClickAdd: function() {
+    onSubmit: function(e) {
+        e.preventDefault()
         this.props.onAddName(this.state.text)
         this.setState({text: ""})
     }
