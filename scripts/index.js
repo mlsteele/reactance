@@ -35,6 +35,12 @@ var renderApp = function() {
             playerNames: gamestate.playerNames,
             settings: gamestate.settings,
             onAddName: dispatcher.bake('addPlayer', 'name'),
+            onAddName: function(name) {
+                dispatch({
+                    action: 'addPlayer',
+                    name: name.charAt(0).toUpperCase() + name.slice(1),
+                })
+            },
             onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
             onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
         }),
