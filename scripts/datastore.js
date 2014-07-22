@@ -6,6 +6,9 @@ function AppState() {
     this.playerNames = []
     this.selectedPlayer = null
     this.displayMode = 'list'
+    this.settings = {
+        merlin: false,
+    }
 }
 
 AppState.prototype.addPlayer = function(name) {
@@ -36,6 +39,11 @@ AppState.prototype.deselectPlayer = function() {
     console.log('deselecting')
     this.selectedPlayer = null
     this.displayMode = 'list'
+    this.trigger('change')
+}
+
+AppState.prototype.changeSettings = function(settings) {
+    _.extend(this.settings, settings)
     this.trigger('change')
 }
 

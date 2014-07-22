@@ -7,16 +7,18 @@ var PT = React.PropTypes
 var RolesPage = React.createClass({
     propTypes: {
         playerNames: PT.array.isRequired,
-        merlin: PT.bool.isRequired,
+        // Mapping of settings to their values.
+        settings: PT.object.isRequired,
         onAddName: PT.func.isRequired,
         onDeleteName: PT.func.isRequired,
+        onChangeSettings: PT.func.isRequired,
     },
 
     render: function() {
         return <div>
             <input
                 type="checkbox"
-                checked={this.props.merlin}
+                checked={this.props.settings.merlin}
                 onChange={this.onChangeMerlin} >
                 Merlin
             </input>
@@ -24,7 +26,9 @@ var RolesPage = React.createClass({
     },
 
     onChangeMerlin: function() {
-        console.log(event.target.checked)
+        this.props.onChangeSettings({
+            merlin: event.target.checked,
+        })
     },
 });
 

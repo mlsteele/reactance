@@ -29,9 +29,10 @@ var renderApp = function() {
     React.renderComponent(
         SetupPage({
             playerNames: appstate.playerNames,
-            merlin: false,
+            settings: appstate.settings,
             onAddName: appstate.addPlayer.bind(appstate),
             onDeleteName: appstate.deletePlayer.bind(appstate),
+            onChangeSettings: appstate.changeSettings.bind(appstate),
         }),
         document.getElementById('app')
     );
