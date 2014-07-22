@@ -1,7 +1,7 @@
 var ReactanceApp = require('./reactance-app.jsx')
 var RolesPage = require('./roles-page.jsx')
 var SetupPage = require('./setup-page.jsx')
-var AppState = require('./datastore')
+var AppState = require('./app-state')
 
 var appstate = new AppState()
 window.appstate = appstate
@@ -39,4 +39,4 @@ var renderApp = function() {
 }
 
 renderApp()
-appstate.on('change', renderApp)
+appstate.onChange(renderApp)
