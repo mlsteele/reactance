@@ -1,10 +1,10 @@
 /** @jsx React.DOM */
 
 var PlayerList = require('./player-list.jsx')
-var RoleCard = require('./role-card.jsx')
+var Settings = require('./settings.jsx')
 var PT = React.PropTypes
 
-var RolesPage = React.createClass({
+var SetupPage = React.createClass({
     propTypes: {
         playerNames: PT.array.isRequired,
         // Mapping of settings to their values.
@@ -15,13 +15,13 @@ var RolesPage = React.createClass({
     },
 
     render: function() {
-        return <div onClick={this.onChangeMerlin}>
-            <input
-                type="checkbox"
-                readOnly={true}
-                checked={this.props.settings.merlin}>
-                Merlin
-            </input>
+        return <div>
+            <PlayerList
+                playerNames={this.props.playerNames}
+                onDeleteName={this.props.onDeleteName} />
+            <Settings
+                settings={this.props.settings}
+                onChangeSettings={this.props.onChangeSettings} />
         </div>
     },
 
@@ -32,4 +32,4 @@ var RolesPage = React.createClass({
     },
 });
 
-module.exports = RolesPage
+module.exports = SetupPage
