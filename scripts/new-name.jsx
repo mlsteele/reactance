@@ -28,8 +28,10 @@ var NewName = React.createClass({
 
     onSubmit: function(e) {
         e.preventDefault()
-        this.props.onAddName(this.state.text)
-        this.setState({text: ""})
+        if (this.state.text != "") {
+            this.props.onAddName(this.state.text)
+            this.setState({text: ""})
+        }
     }
 });
 
