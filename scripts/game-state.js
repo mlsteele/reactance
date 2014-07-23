@@ -9,6 +9,7 @@ function GameState(dispatcher) {
     this.settings = {
         merlin: false,
     }
+    this.roles = null
 
     dispatcher.onAction(function(payload) {
         var actions = GameState.actions
@@ -16,6 +17,30 @@ function GameState(dispatcher) {
             actions[payload.action].call(this, payload)
         }
     }.bind(this))
+}
+
+GameState.prototype.assignRoles = function() {
+    // players    5 6 7 8 9 10
+    // resistance 3 4 4 5 6 6
+    // spy        2 2 3 3 3 4
+    // var resistance = {5: 3, 6: 4, 7: 4, 8: 5, 9: 6, 10: 6,}
+
+    var numPlayers = this.playerNames.length
+    var numSpies = {5: 2, 6: 2, 7: 3, 8: 3, 9: 3, 10: 4,}[numPlayers]
+    var names = _.shuffle(this.playerNames)
+    var roles = {}
+    names.forEach((name, i) => {
+        roles[name] = {
+            spy: i < numSpies,
+        }
+    })
+    this.roles = roles
+    this._emitChange()
+}
+
+GameState.prototype.getSpies = function() {
+    return _.filter(this.playerNames, (name) =>
+        this.roles[name].spy)
 }
 
 GameState.actions = {}
