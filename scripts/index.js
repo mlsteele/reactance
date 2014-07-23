@@ -1,20 +1,25 @@
 var Tabs = require('./tabs.jsx')
-var RolesPage = require('./roles-page.jsx')
 var SetupPage = require('./setup-page.jsx')
+var RolesPage = require('./roles-page.jsx')
+var MissionPage = require('./mission-page.jsx')
 var Dispatcher = require('./dispatcher')
-var GameState = require('./game-state')
 var UIState = require('./ui-state')
+var GameState = require('./game-state')
+var MissionState = require('./mission-state')
 
 var dispatcher = new Dispatcher()
 var dispatch = dispatcher.dispatch.bind(dispatcher)
 var uistate = new UIState(dispatcher)
 var gamestate = new GameState(dispatcher)
+var missionstate = new MissionState(dispatcher)
 
 dispatch({action: 'addPlayer', name: 'Miles'})
 dispatch({action: 'addPlayer', name: 'Jess'})
 dispatch({action: 'addPlayer', name: 'Brandon'})
 dispatch({action: 'addPlayer', name: 'Ciara'})
 dispatch({action: 'addPlayer', name: 'Chris'})
+dispatch({action: 'newRoles'})
+// dispatch({action: 'changeTab', tab: 'mission'})
 
 var onAddName = function(name) {
     dispatch({
@@ -42,6 +47,9 @@ var renderApp = function() {
         onClickOk:      dispatcher.bake('deselectPlayer', 'name'),
     })
 
+    var missionPage = MissionPage({
+    })
+
     React.renderComponent(
         Tabs({
             activeTab: uistate.tab,
@@ -49,6 +57,7 @@ var renderApp = function() {
             tabs: {
                 setup: setupPage,
                 roles: rolesPage,
+                mission: missionPage,
             }
         }),
         document.getElementById('app')

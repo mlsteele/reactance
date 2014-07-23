@@ -21,6 +21,8 @@ UIState.actions = {}
 
 UIState.actions.changeTab = function({tab}) {
     this.tab = tab
+    this.selectedPlayer = null
+    this.roleDisplayMode = 'list'
     this._emitChange()
 }
 

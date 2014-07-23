@@ -1,8 +1,8 @@
 var Store = require('./store')
 
-module.exports = GameState
+module.exports = MissionState
 
-function GameState(dispatcher) {
+function MissionState(dispatcher) {
     Store.mixin(this)
 
     this.playerNames = []
@@ -12,24 +12,24 @@ function GameState(dispatcher) {
     this.roles = null
 
     dispatcher.onAction(function(payload) {
-        var actions = GameState.actions
+        var actions = MissionState.actions
         if (_.isFunction(actions[payload.action])) {
             actions[payload.action].call(this, payload)
         }
     }.bind(this))
 }
 
-GameState.prototype.getRole = function(name) {
+MissionState.prototype.getRole = function(name) {
     if (this.roles === null) return null
     return this.roles[name]
 }
 
-GameState.prototype.getSpies = function() {
+MissionState.prototype.getSpies = function() {
     return _.filter(this.playerNames, (name) =>
         this.roles[name].spy)
 }
 
-GameState.prototype.assignRoles = function() {
+MissionState.prototype.assignRoles = function() {
     // players    5 6 7 8 9 10
     // resistance 3 4 4 5 6 6
     // spy        2 2 3 3 3 4
@@ -48,34 +48,23 @@ GameState.prototype.assignRoles = function() {
     this._emitChange()
 }
 
-GameState.prototype.clearRoles = function() {
-    this.roles = null
-}
+MissionState.actions = {}
 
-GameState.actions = {}
-
-GameState.actions.addPlayer = function({name}) {
+MissionState.actions.addPlayer = function({name}) {
     if (!_.contains(this.playerNames, name)) {
         this.playerNames.push(name)
-        this.clearRoles()
         this._emitChange()
     } else {
         console.log("ignoring duplicate name", name)
     }
 }
 
-GameState.actions.deletePlayer = function({name}) {
+MissionState.actions.deletePlayer = function({name}) {
     this.playerNames = _.without(this.playerNames, name)
-    this.clearRoles()
     this._emitChange()
 }
 
-GameState.actions.changeSettings = function({settings}) {
+MissionState.actions.changeSettings = function({settings}) {
     _.extend(this.settings, settings)
-    this.clearRoles()
     this._emitChange()
-}
-
-GameState.actions.newRoles = function() {
-    this.assignRoles()
 }
