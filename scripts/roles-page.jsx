@@ -9,6 +9,7 @@ var RolesPage = React.createClass({
         mode: PT.oneOf(['list', 'confirm', 'role']).isRequired,
         playerNames: PT.array.isRequired,
         selectedPlayer: PT.string,
+        selectedRole: PT.object,
         onClickShow: PT.func.isRequired,
         onClickConfirm: PT.func.isRequired,
         onClickCancel: PT.func.isRequired,
@@ -24,6 +25,7 @@ var RolesPage = React.createClass({
             return <RoleCard
                 confirmed={this.props.mode === 'role'}
                 playerName={this.props.selectedPlayer}
+                role={this.props.selectedRole}
                 onClickConfirm={this.props.onClickConfirm}
                 onClickCancel={this.props.onClickCancel}
                 onClickBack={this.props.onClickCancel} />

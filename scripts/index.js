@@ -22,6 +22,7 @@ var renderApp = function() {
             mode: uistate.displayMode,
             playerNames: gamestate.playerNames,
             selectedPlayer: uistate.selectedPlayer,
+            selectedRole:   gamestate.getRole(uistate.selectedPlayer),
             onClickShow:    dispatcher.bake('selectPlayer', 'name'),
             onClickConfirm: dispatcher.bake('confirmPlayer', 'name'),
             onClickCancel:  dispatcher.bake('deselectPlayer'),
@@ -51,3 +52,6 @@ var renderApp = function() {
 renderApp()
 uistate.onChange(renderApp)
 gamestate.onChange(renderApp)
+
+gamestate.assignRoles()
+dispatch({action: 'confirmPlayer', name: gamestate.playerNames[0]})

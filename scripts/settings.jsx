@@ -1,7 +1,5 @@
 /** @jsx React.DOM */
 
-var PlayerList = require('./player-list.jsx')
-var RoleCard = require('./role-card.jsx')
 var PT = React.PropTypes
 
 var Settings = React.createClass({

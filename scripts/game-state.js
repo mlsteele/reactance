@@ -19,6 +19,16 @@ function GameState(dispatcher) {
     }.bind(this))
 }
 
+GameState.prototype.getRole = function(name) {
+    if (this.roles === null) return null
+    return this.roles[name]
+}
+
+GameState.prototype.getSpies = function() {
+    return _.filter(this.playerNames, (name) =>
+        this.roles[name].spy)
+}
+
 GameState.prototype.assignRoles = function() {
     // players    5 6 7 8 9 10
     // resistance 3 4 4 5 6 6
@@ -36,11 +46,6 @@ GameState.prototype.assignRoles = function() {
     })
     this.roles = roles
     this._emitChange()
-}
-
-GameState.prototype.getSpies = function() {
-    return _.filter(this.playerNames, (name) =>
-        this.roles[name].spy)
 }
 
 GameState.actions = {}

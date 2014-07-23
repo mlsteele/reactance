@@ -6,6 +6,7 @@ var RoleCard = React.createClass({
     propTypes: {
         confirmed: PT.bool.isRequired,
         playerName: PT.string.isRequired,
+        role: PT.object.isRequired,
         onClickConfirm: PT.func.isRequired,
         onClickCancel: PT.func.isRequired,
         onClickBack: PT.func.isRequired,
@@ -13,26 +14,38 @@ var RoleCard = React.createClass({
 
     render: function() {
         if (this.props.confirmed) {
-            return <div>
-                <p>You're a spy!</p>
-                <button
-                    onClick={this.onClickBack}>
-                    Back
-                </button>
-            </div>
+            return this.renderConfirmed()
         } else {
-            return <div>
-                <p>Are you {this.props.playerName}</p>
-                <button
-                    onClick={this.onClickConfirm}>
-                    Yes
-                </button>
-                <button
-                    onClick={this.onClickCancel}>
-                    No
-                </button>
-            </div>
+            return this.renderUncomfirmed()
         }
+    },
+
+    renderConfirmed: function() {
+        console.log(this.props.role.spy)
+        return <div>
+            <If cond={this.props.role.spy}
+                a={<p>You're a spy!</p>}
+                b={<p>You are a resistance member.</p>}
+            />
+            <button
+                onClick={this.onClickBack}>
+                Back
+            </button>
+        </div>
+    },
+
+    renderUncomfirmed: function() {
+        return <div>
+            <p>Are you {this.props.playerName}</p>
+            <button
+                onClick={this.onClickConfirm}>
+                Yes
+            </button>
+            <button
+                onClick={this.onClickCancel}>
+                No
+            </button>
+        </div>
     },
 
     onClickConfirm: function() {
@@ -47,5 +60,21 @@ var RoleCard = React.createClass({
         this.props.onClickBack()
     },
 });
+
+var If = React.createClass({
+    propTypes: {
+        cond: PT.bool.isRequired,
+        a: PT.component.isRequired,
+        b: PT.component.isRequired,
+    },
+
+    render: function() {
+        if (this.props.cond) {
+            return this.props.a
+        } else {
+            return this.props.b
+        }
+    },
+})
 
 module.exports = RoleCard
