@@ -19,7 +19,7 @@ dispatch({action: 'addPlayer', name: 'Brandon'})
 dispatch({action: 'addPlayer', name: 'Ciara'})
 dispatch({action: 'addPlayer', name: 'Chris'})
 dispatch({action: 'newRoles'})
-// dispatch({action: 'changeTab', tab: 'mission'})
+dispatch({action: 'changeTab', tab: 'mission'})
 
 var onAddName = function(name) {
     dispatch({
