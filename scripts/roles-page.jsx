@@ -17,7 +17,7 @@ var RolesPage = React.createClass({
     },
 
     render: function() {
-        if (this.props.mode ==='list') {
+        if (this.props.mode === 'list') {
             return <PlayerList
                 playerNames={this.props.playerNames}
                 onClickShow={this.props.onClickShow} />
