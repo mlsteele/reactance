@@ -10,6 +10,7 @@ function Dispatcher() {
  * payload should include an `action` key.
  */
 Dispatcher.prototype.dispatch = function(payload) {
+    console.log(payload.action)
     this._eventer.trigger('action', payload)
 }
 

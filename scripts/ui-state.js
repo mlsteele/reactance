@@ -5,8 +5,9 @@ module.exports = UIState
 function UIState(dispatcher) {
     Store.mixin(this)
 
+    this.tab = 'setup'
+    this.roleDisplayMode = 'list'
     this.selectedPlayer = null
-    this.displayMode = 'list'
 
     dispatcher.onAction(function(payload) {
         var actions = UIState.actions
@@ -18,23 +19,28 @@ function UIState(dispatcher) {
 
 UIState.actions = {}
 
+UIState.actions.changeTab = function({tab}) {
+    this.tab = tab
+    this._emitChange()
+}
+
 UIState.actions.selectPlayer = function({name}) {
     console.log('selecting', name)
     this.selectedPlayer = name
-    this.displayMode = 'confirm'
+    this.roleDisplayMode = 'confirm'
     this._emitChange()
 }
 
 UIState.actions.confirmPlayer = function({name}) {
     console.log('confirming', name)
     this.selectedPlayer = name
-    this.displayMode = 'role'
+    this.roleDisplayMode = 'role'
     this._emitChange()
 }
 
 UIState.actions.deselectPlayer = function() {
     console.log('deselecting')
     this.selectedPlayer = null
-    this.displayMode = 'list'
+    this.roleDisplayMode = 'list'
     this._emitChange()
 }

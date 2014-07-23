@@ -1,4 +1,4 @@
-var ReactanceApp = require('./reactance-app.jsx')
+var Tabs = require('./tabs.jsx')
 var RolesPage = require('./roles-page.jsx')
 var SetupPage = require('./setup-page.jsx')
 var Dispatcher = require('./dispatcher')
@@ -16,42 +16,45 @@ dispatch({action: 'addPlayer', name: 'Brandon'})
 dispatch({action: 'addPlayer', name: 'Ciara'})
 dispatch({action: 'addPlayer', name: 'Chris'})
 
+var onAddName = function(name) {
+    dispatch({
+        action: 'addPlayer',
+        name: name.charAt(0).toUpperCase() + name.slice(1),
+    })
+}
+
 var renderApp = function() {
+    var setupPage = SetupPage({
+        playerNames: gamestate.playerNames, settings: gamestate.settings,
+        onAddName: onAddName,
+        onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
+        onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
+    })
+
+    var rolesPage = RolesPage({
+        mode: uistate.roleDisplayMode,
+        playerNames: gamestate.playerNames,
+        selectedPlayer: uistate.selectedPlayer,
+        selectedRole:   gamestate.getRole(uistate.selectedPlayer),
+        onClickShow:    dispatcher.bake('selectPlayer', 'name'),
+        onClickConfirm: dispatcher.bake('confirmPlayer', 'name'),
+        onClickCancel:  dispatcher.bake('deselectPlayer'),
+        onClickOk:      dispatcher.bake('deselectPlayer', 'name'),
+    })
+
     React.renderComponent(
-        RolesPage({
-            mode: uistate.displayMode,
-            playerNames: gamestate.playerNames,
-            selectedPlayer: uistate.selectedPlayer,
-            selectedRole:   gamestate.getRole(uistate.selectedPlayer),
-            onClickShow:    dispatcher.bake('selectPlayer', 'name'),
-            onClickConfirm: dispatcher.bake('confirmPlayer', 'name'),
-            onClickCancel:  dispatcher.bake('deselectPlayer'),
-            onClickOk:      dispatcher.bake('deselectPlayer', 'name'),
+        Tabs({
+            activeTab: uistate.tab,
+            onChangeTab: dispatcher.bake('changeTab', 'tab'),
+            tabs: {
+                setup: setupPage,
+                roles: rolesPage,
+            }
         }),
         document.getElementById('app')
-    );
-
-    // React.renderComponent(
-        // SetupPage({
-            // playerNames: gamestate.playerNames,
-            // settings: gamestate.settings,
-            // onAddName: function(name) {
-                // dispatch({
-                    // action: 'addPlayer',
-                    // name: name.charAt(0).toUpperCase() + name.slice(1),
-                // })
-            // },
-            // onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
-            // onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
-        // }),
-        // document.getElementById('app')
-    // )
-
+    )
 }
 
 renderApp()
 uistate.onChange(renderApp)
 gamestate.onChange(renderApp)
-
-gamestate.assignRoles()
-dispatch({action: 'confirmPlayer', name: gamestate.playerNames[0]})
