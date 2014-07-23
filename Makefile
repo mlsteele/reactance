@@ -1,10 +1,12 @@
 .PHONY: build watch
+BROWSERIFY=node_modules/.bin/browserify
+WATCHIFY=node_modules/.bin/watchify
 
 build:
-	browserify scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug
+	$(BROWSERIFY) scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug
 
 watch:
-	watchify   scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug -v
+	$(WATCHIFY)   scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug -v
 
 less:
 	lessc styles/index.less styles/bundle.css
