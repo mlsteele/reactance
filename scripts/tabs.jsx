@@ -27,11 +27,6 @@ var Tabs = React.createClass({
                 {name}</li>
         }.bind(this)) 
     },
-
-    onClickTab: function(name) {
-        console.log(name)
-        // onChangeTab
-    },
 });
 
 module.exports = Tabs

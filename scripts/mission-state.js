@@ -22,7 +22,7 @@ MissionState.actions.missionVote = function({pass}) {
     if (pass) {
         this.passes += 1
     } else {
-        this.passes -= 1
+        this.fails += 1
     }
     this._emitChange()
 }

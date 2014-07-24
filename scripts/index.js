@@ -53,6 +53,7 @@ var renderApp = function() {
     var missionPage = MissionPage({
         passes: missionstate.passes,
         fails: missionstate.fails,
+        onVote: dispatcher.bake('missionVote', 'pass'),
     })
 
     React.renderComponent(

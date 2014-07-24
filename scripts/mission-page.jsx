@@ -8,10 +8,27 @@ var MissionPage = React.createClass({
     propTypes: {
         passes: PT.number.isRequired,
         fails:  PT.number.isRequired,
+        onVote:  PT.func.isRequired,
     },
 
     render: function() {
-        return <p>missions missions missions missions</p>
+        return <div>
+            <p>passes: {this.props.passes}</p>
+            <p>fails: {this.props.fails}</p>
+            <button
+                data-pass="pass"
+                onClick={this.onVote} >
+                pass</button>
+            <button
+                data-pass="fail"
+                onClick={this.onVote} >
+                fail</button>
+        </div>
+    },
+
+    onVote: function(e) {
+        this.props.onVote(
+            e.target.dataset.pass === "pass")
     },
 });
 
