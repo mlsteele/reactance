@@ -13,12 +13,14 @@ var uistate = new UIState(dispatcher)
 var gamestate = new GameState(dispatcher)
 var missionstate = new MissionState(dispatcher)
 
-dispatch({action: 'addPlayer', name: 'Miles'})
-dispatch({action: 'addPlayer', name: 'Jess'})
-dispatch({action: 'addPlayer', name: 'Brandon'})
-dispatch({action: 'addPlayer', name: 'Ciara'})
-dispatch({action: 'addPlayer', name: 'Chris'})
-// dispatch({action: 'changeTab', tab: 'mission'})
+gamestate.load()
+
+// dispatch({action: 'addPlayer', name: 'Miles'})
+// dispatch({action: 'addPlayer', name: 'Jess'})
+// dispatch({action: 'addPlayer', name: 'Brandon'})
+// dispatch({action: 'addPlayer', name: 'Ciara'})
+// dispatch({action: 'addPlayer', name: 'Chris'})
+// // dispatch({action: 'changeTab', tab: 'mission'})
 
 var onAddName = function(name) {
     dispatch({

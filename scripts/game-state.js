@@ -15,8 +15,24 @@ function GameState(dispatcher) {
         var actions = GameState.actions
         if (_.isFunction(actions[payload.action])) {
             actions[payload.action].call(this, payload)
+            this.save()
         }
     }.bind(this))
+}
+
+var PERSIST_KEYS = ['playerNames', 'settings', 'roles']
+
+GameState.prototype.save = function() {
+    var persist = {}
+    PERSIST_KEYS.forEach(key => persist[key] = this[key])
+    store.set('store.gamestate', persist)
+}
+
+GameState.prototype.load = function() {
+    var persist = store.get('store.gamestate')
+    if (persist !== undefined) {
+        PERSIST_KEYS.forEach(key => this[key] = persist[key])
+    }
 }
 
 GameState.prototype.getRole = function(name) {
