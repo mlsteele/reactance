@@ -6,6 +6,8 @@ var PT = React.PropTypes
 
 var MissionPage = React.createClass({
     propTypes: {
+        passes: PT.number.isRequired,
+        fails:  PT.number.isRequired,
     },
 
     render: function() {

@@ -13,6 +13,7 @@ var uistate = new UIState(dispatcher)
 var gamestate = new GameState(dispatcher)
 var missionstate = new MissionState(dispatcher)
 
+uistate.load()
 gamestate.load()
 
 // dispatch({action: 'addPlayer', name: 'Miles'})
@@ -20,7 +21,7 @@ gamestate.load()
 // dispatch({action: 'addPlayer', name: 'Brandon'})
 // dispatch({action: 'addPlayer', name: 'Ciara'})
 // dispatch({action: 'addPlayer', name: 'Chris'})
-// // dispatch({action: 'changeTab', tab: 'mission'})
+// dispatch({action: 'changeTab', tab: 'mission'})
 
 var onAddName = function(name) {
     dispatch({
@@ -50,6 +51,8 @@ var renderApp = function() {
     })
 
     var missionPage = MissionPage({
+        passes: missionstate.passes,
+        fails: missionstate.fails,
     })
 
     React.renderComponent(
@@ -69,3 +72,4 @@ var renderApp = function() {
 renderApp()
 uistate.onChange(renderApp)
 gamestate.onChange(renderApp)
+missionstate.onChange(renderApp)
