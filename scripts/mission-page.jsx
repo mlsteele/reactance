@@ -9,6 +9,7 @@ var MissionPage = React.createClass({
         passes: PT.number.isRequired,
         fails:  PT.number.isRequired,
         onVote:  PT.func.isRequired,
+        onReset:  PT.func.isRequired,
     },
 
     render: function() {
@@ -23,6 +24,9 @@ var MissionPage = React.createClass({
                 data-pass="fail"
                 onClick={this.onVote} >
                 fail</button>
+            <button
+                onClick={this.props.onReset} >
+                reset</button>
         </div>
     },
 

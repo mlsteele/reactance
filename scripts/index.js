@@ -54,6 +54,7 @@ var renderApp = function() {
         passes: missionstate.passes,
         fails: missionstate.fails,
         onVote: dispatcher.bake('missionVote', 'pass'),
+        onReset: dispatcher.bake('missionReset'),
     })
 
     React.renderComponent(
