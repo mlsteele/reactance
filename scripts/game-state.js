@@ -48,8 +48,21 @@ GameState.prototype.assignRoles = function() {
     this._emitChange()
 }
 
-GameState.prototype.clearRoles = function() {
-    this.roles = null
+/**
+ * Make sure that roles exist
+ * if they can.
+ * clear - whether to clear existing roles
+ */
+GameState.prototype.updateRoles = function(clear) {
+    console.log('RECLEAR')
+    if (clear) {
+        this.roles = null
+    }
+    if (this.roles === null) {
+        if (this.playerNames.length >= 5 && this.playerNames.length <= 10) {
+            this.assignRoles()
+        }
+    }
 }
 
 GameState.actions = {}
@@ -57,7 +70,7 @@ GameState.actions = {}
 GameState.actions.addPlayer = function({name}) {
     if (!_.contains(this.playerNames, name)) {
         this.playerNames.push(name)
-        this.clearRoles()
+        this.updateRoles(true)
         this._emitChange()
     } else {
         console.log("ignoring duplicate name", name)
@@ -66,16 +79,16 @@ GameState.actions.addPlayer = function({name}) {
 
 GameState.actions.deletePlayer = function({name}) {
     this.playerNames = _.without(this.playerNames, name)
-    this.clearRoles()
+    this.updateRoles(true)
     this._emitChange()
 }
 
 GameState.actions.changeSettings = function({settings}) {
     _.extend(this.settings, settings)
-    this.clearRoles()
+    this.updateRoles(true)
     this._emitChange()
 }
 
 GameState.actions.newRoles = function() {
-    this.assignRoles()
+    this.updateRoles(true)
 }

@@ -18,8 +18,7 @@ dispatch({action: 'addPlayer', name: 'Jess'})
 dispatch({action: 'addPlayer', name: 'Brandon'})
 dispatch({action: 'addPlayer', name: 'Ciara'})
 dispatch({action: 'addPlayer', name: 'Chris'})
-dispatch({action: 'newRoles'})
-dispatch({action: 'changeTab', tab: 'mission'})
+// dispatch({action: 'changeTab', tab: 'mission'})
 
 var onAddName = function(name) {
     dispatch({
@@ -37,10 +36,11 @@ var renderApp = function() {
     })
 
     var rolesPage = RolesPage({
-        mode: uistate.roleDisplayMode,
+        rolesExist: gamestate.roles !== null,
         playerNames: gamestate.playerNames,
         selectedPlayer: uistate.selectedPlayer,
         selectedRole:   gamestate.getRole(uistate.selectedPlayer),
+        selectionConfirmed: uistate.selectionConfirmed,
         onClickShow:    dispatcher.bake('selectPlayer', 'name'),
         onClickConfirm: dispatcher.bake('confirmPlayer', 'name'),
         onClickCancel:  dispatcher.bake('deselectPlayer'),
