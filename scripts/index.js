@@ -29,6 +29,7 @@ var renderApp = function() {
         onAddName: onAddName,
         onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
         onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
+        onNewRoles: dispatcher.bake('newRoles'),
     })
 
     var rolesPage = RolesPage({

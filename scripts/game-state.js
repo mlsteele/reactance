@@ -35,9 +35,20 @@ GameState.prototype.load = function() {
     }
 }
 
+/**
+ * Get a role for a user.
+ * Adds some extra useful info to the returned role.
+ */
 GameState.prototype.getRole = function(name) {
     if (this.roles === null) return null
-    return this.roles[name]
+    var role = _.extend({}, this.roles[name])
+    if (role.spy) {
+        role.otherSpies = _.without(this.getSpies(), name)
+    }
+    if (role.merlin) {
+        role.spies = this.getSpies()
+    }
+    return role
 }
 
 GameState.prototype.getSpies = function() {
@@ -54,14 +65,20 @@ GameState.prototype.assignRoles = function() {
     var numPlayers = this.playerNames.length
     var numSpies = {5: 2, 6: 2, 7: 3, 8: 3, 9: 3, 10: 4,}[numPlayers]
     var names = _.shuffle(this.playerNames)
-    var roles = {}
+
+    // Assign initial roles
+    this.roles = {}
     names.forEach((name, i) => {
-        roles[name] = {
+        this.roles[name] = {
             spy: i < numSpies,
-            merlin: i === numSpies,
         }
     })
-    this.roles = roles
+
+    if (this.settings.merlin) {
+        var merlinName = this.playerNames[numSpies]
+        this.roles[merlinName].merlin = true
+    }
+
     this._emitChange()
 }
 

@@ -1,5 +1,6 @@
 /** @jsx React.DOM */
 
+var PlayerList = require('./player-list.jsx')
 var PT = React.PropTypes
 
 var RoleCard = React.createClass({
@@ -21,11 +22,23 @@ var RoleCard = React.createClass({
     },
 
     renderConfirmed: function() {
+        var role = this.props.role
         var contents = null
-        if (this.props.role.spy) {
-            contents = <p>You're a spy!</p>
+        if (role.spy) {
+            contents = <div>
+                <p>You're a spy!</p>
+                <p>The other spies are:</p>
+                <PlayerList playerNames={this.props.role.otherSpies}/>
+            </div>
         } else {
             contents = <p>You are a resistance member.</p>
+        }
+        if (role.merlin) {
+            contents = <div>
+                <p>You are the merlin.</p>
+                <p>The spies are:</p>
+                <PlayerList playerNames={this.props.role.spies}/>
+            </div>
         }
         return <div>
             {contents}

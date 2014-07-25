@@ -12,6 +12,7 @@ var SetupPage = React.createClass({
         onAddName: PT.func.isRequired,
         onDeleteName: PT.func.isRequired,
         onChangeSettings: PT.func.isRequired,
+        onNewRoles: PT.func.isRequired,
     },
 
     render: function() {
@@ -23,6 +24,7 @@ var SetupPage = React.createClass({
             <Settings
                 settings={this.props.settings}
                 onChangeSettings={this.props.onChangeSettings} />
+            <button onClick={this.props.onNewRoles}>New Roles</button>
         </div>
     },
 
