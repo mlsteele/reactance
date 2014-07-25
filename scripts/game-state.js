@@ -58,6 +58,7 @@ GameState.prototype.assignRoles = function() {
     names.forEach((name, i) => {
         roles[name] = {
             spy: i < numSpies,
+            merlin: i === numSpies,
         }
     })
     this.roles = roles

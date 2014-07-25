@@ -21,12 +21,14 @@ var RoleCard = React.createClass({
     },
 
     renderConfirmed: function() {
-        console.log(this.props.role.spy)
+        var contents = null
+        if (this.props.role.spy) {
+            contents = <p>You're a spy!</p>
+        } else {
+            contents = <p>You are a resistance member.</p>
+        }
         return <div>
-            <If cond={this.props.role.spy}
-                a={<p>You're a spy!</p>}
-                b={<p>You are a resistance member.</p>}
-            />
+            {contents}
             <button
                 onClick={this.onClickBack}>
                 Back
