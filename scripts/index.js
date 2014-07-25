@@ -46,7 +46,9 @@ var renderApp = function() {
     var missionPage = MissionPage({
         passes: missionstate.passes,
         fails: missionstate.fails,
+        revealed: uistate.missionRevealed,
         onVote: dispatcher.bake('missionVote', 'pass'),
+        onReveal: dispatcher.bake('missionReveal'),
         onReset: dispatcher.bake('missionReset'),
     })
 

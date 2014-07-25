@@ -7,10 +7,19 @@ function Dispatcher() {
 }
 
 /**
- * payload should include an `action` key.
+ * Dispatch an action.
+ * Usage:
+ * dispatcher('fidget')
+ * dispatcher('fidget', {with: 'pencil'})
+ * dispatcher({action: 'fidget', with: 'pencil'})
  */
-Dispatcher.prototype.dispatch = function(payload) {
-    console.log(payload.action)
+Dispatcher.prototype.dispatch = function(action, payload) {
+    if (_.isString(action)) {
+        payload = _.extend({action: action}, payload)
+    } else {
+        payload = action
+    }
+    console.log(`dispatch: ${payload.action}`)
     this._eventer.trigger('action', payload)
 }
 

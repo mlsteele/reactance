@@ -8,6 +8,7 @@ function UIState(dispatcher) {
     this.tab = 'setup'
     this.selectedPlayer = null
     this.selectionConfirmed = false
+    this.missionRevealed = false
 
     dispatcher.onAction(function(payload) {
         var actions = UIState.actions
@@ -61,5 +62,15 @@ UIState.actions.deselectPlayer = function() {
     console.log('deselecting')
     this.selectedPlayer = null
     this.selectionConfirmed = false
+    this._emitChange()
+}
+
+UIState.actions.missionReveal = function() {
+    this.missionRevealed = true
+    this._emitChange()
+}
+
+UIState.actions.missionReset = function() {
+    this.missionRevealed = false
     this._emitChange()
 }

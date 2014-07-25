@@ -8,31 +8,40 @@ var MissionPage = React.createClass({
     propTypes: {
         passes: PT.number.isRequired,
         fails:  PT.number.isRequired,
+        revealed:  PT.bool.isRequired,
         onVote:  PT.func.isRequired,
         onReset:  PT.func.isRequired,
+        onReveal:  PT.func.isRequired,
     },
 
     render: function() {
-        return <div>
-            <p>passes: {this.props.passes}</p>
-            <p>fails: {this.props.fails}</p>
-            <button
-                data-pass="pass"
-                onClick={this.onVote} >
-                pass</button>
-            <button
-                data-pass="fail"
-                onClick={this.onVote} >
-                fail</button>
-            <button
-                onClick={this.props.onReset} >
-                reset</button>
-        </div>
+        if (this.props.revealed) {
+            return <div>
+                <p>Passes: {this.props.passes}</p>
+                <p>Fails: {this.props.fails}</p>
+                <button onClick={this.props.onReset}>Reset</button>
+            </div>
+        } else {
+            var votes = this.props.passes + this.props.fails
+            return <div>
+                <p>Votes: {votes}</p>
+                <button
+                    data-pass="pass"
+                    onClick={this.onVote} >
+                    pass</button>
+                <button
+                    data-pass="fail"
+                    onClick={this.onVote} >
+                    fail</button>
+                <button onClick={this.props.onReset}>Reset</button>
+                <button onClick={this.props.onReveal}>Reveal</button>
+            </div>
+        }
     },
 
     onVote: function(e) {
-        this.props.onVote(
-            e.target.dataset.pass === "pass")
+        var pass = e.target.dataset.pass === 'pass'
+        this.props.onVote(pass)
     },
 });
 
