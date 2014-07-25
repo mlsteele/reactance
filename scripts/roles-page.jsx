@@ -6,7 +6,7 @@ var PT = React.PropTypes
 
 var RolesPage = React.createClass({
     propTypes: {
-        rolesExist: PT.bool.isRequired,
+        disabledReason: PT.oneOf(['tooFew', 'tooMany']),
         playerNames: PT.array.isRequired,
         selectedPlayer: PT.string,
         selectedRole: PT.object,
@@ -18,9 +18,17 @@ var RolesPage = React.createClass({
     },
 
     render: function() {
-        if (!this.props.rolesExist) {
-            return <p>Invalid setup. Go back to setup.</p>
+        if (this.props.disabledReason !== null) {
+            var message = {
+                tooFew: "Not enough players. :(",
+                tooMany: "Too many players. :(",
+            }[this.props.disabledReason]
+            return <p>{message}</p>
         }
+
+        // if (!this.props.rolesExist) {
+            // return <p>Invalid setup. Go back to setup and change something.</p>
+        // }
 
         if (this.props.selectedPlayer) {
             return <RoleCard

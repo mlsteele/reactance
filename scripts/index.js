@@ -33,7 +33,7 @@ var renderApp = function() {
     })
 
     var rolesPage = RolesPage({
-        rolesExist: gamestate.roles !== null,
+        disabledReason: gamestate.disabledReason,
         playerNames: gamestate.playerNames,
         selectedPlayer: uistate.selectedPlayer,
         selectedRole:   gamestate.getRole(uistate.selectedPlayer),

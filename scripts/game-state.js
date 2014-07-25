@@ -10,6 +10,10 @@ function GameState(dispatcher) {
         merlin: false,
     }
     this.roles = null
+    // Reason that roles cannot be assigned.
+    // One of: tooMany, tooFew
+    this.disabledReason = null
+
     this.updateRoles()
 
     dispatcher.onAction(function(payload) {
@@ -21,7 +25,7 @@ function GameState(dispatcher) {
     }.bind(this))
 }
 
-var PERSIST_KEYS = ['playerNames', 'settings', 'roles']
+var PERSIST_KEYS = ['playerNames', 'settings', 'roles', 'disabledReason']
 
 GameState.prototype.save = function() {
     var persist = {}
@@ -58,6 +62,10 @@ GameState.prototype.getSpies = function() {
         this.roles[name].spy)
 }
 
+/**
+ * Try to assign roles.
+ * This should not be called if it's not possible.
+ */
 GameState.prototype.assignRoles = function() {
     // players    5 6 7 8 9 10
     // resistance 3 4 4 5 6 6
@@ -66,18 +74,18 @@ GameState.prototype.assignRoles = function() {
 
     var numPlayers = this.playerNames.length
     var numSpies = {5: 2, 6: 2, 7: 3, 8: 3, 9: 3, 10: 4,}[numPlayers]
-    var names = _.shuffle(this.playerNames)
+    var shuffledNames = _.shuffle(this.playerNames)
 
     // Assign initial roles
     this.roles = {}
-    names.forEach((name, i) => {
+    shuffledNames.forEach((name, i) => {
         this.roles[name] = {
             spy: i < numSpies,
         }
     })
 
     if (this.settings.merlin) {
-        var merlinName = this.playerNames[numSpies]
+        var merlinName = shuffledNames[numSpies]
         this.roles[merlinName].merlin = true
     }
 
@@ -85,8 +93,7 @@ GameState.prototype.assignRoles = function() {
 }
 
 /**
- * Make sure that roles exist
- * if they can.
+ * Make sure that roles exist if they can.
  * clear - whether to clear existing roles
  */
 GameState.prototype.updateRoles = function(clear) {
@@ -94,10 +101,17 @@ GameState.prototype.updateRoles = function(clear) {
         console.log('RECLEAR')
         this.roles = null
     }
-    if (this.roles === null) {
-        if (this.playerNames.length >= 5 && this.playerNames.length <= 10) {
-            this.assignRoles()
-        }
+
+    // Use existing roles if they still exist.
+    if (this.roles !== null) return
+
+    if (this.playerNames.length < 5) {
+        this.disabledReason = 'tooFew'
+    } else if (this.playerNames.length > 10) {
+        this.disabledReason = 'tooMany'
+    } else {
+        this.disabledReason = null
+        this.assignRoles()
     }
 }
 
