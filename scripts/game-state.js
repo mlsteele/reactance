@@ -10,6 +10,7 @@ function GameState(dispatcher) {
         merlin: false,
     }
     this.roles = null
+    this.updateRoles()
 
     dispatcher.onAction(function(payload) {
         var actions = GameState.actions
@@ -33,6 +34,7 @@ GameState.prototype.load = function() {
     if (persist !== undefined) {
         PERSIST_KEYS.forEach(key => this[key] = persist[key])
     }
+    this.updateRoles()
 }
 
 /**
@@ -88,8 +90,8 @@ GameState.prototype.assignRoles = function() {
  * clear - whether to clear existing roles
  */
 GameState.prototype.updateRoles = function(clear) {
-    console.log('RECLEAR')
     if (clear) {
+        console.log('RECLEAR')
         this.roles = null
     }
     if (this.roles === null) {
