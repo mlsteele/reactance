@@ -74,3 +74,10 @@ UIState.actions.missionReset = function() {
     this.missionRevealed = false
     this._emitChange()
 }
+
+UIState.actions.newRoles = function() {
+    this.tab = 'roles'
+    this.selectedPlayer = null
+    this.selectionConfirmed = false
+    this._emitChange()
+}
