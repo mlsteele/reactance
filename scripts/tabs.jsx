@@ -11,20 +11,20 @@ var Tabs = React.createClass({
 
     render: function() {
         return <div>
-            <nav><ul>
+            <nav>
             {this.renderButtons()}
-            </ul></nav>
+            </nav>
             {this.props.tabs[this.props.activeTab]}
         </div>
     },
 
     renderButtons: function() {
         return _.map(this.props.tabs, function(val, name) {
-            return <li 
+            return <a 
                 key={name}
                 data-name={name}
                 onClick={this.props.onChangeTab.bind(null, name)} >
-                {name}</li>
+                {name}</a>
         }.bind(this)) 
     },
 });

@@ -28,11 +28,11 @@ var MissionPage = React.createClass({
                 <button
                     data-pass="pass"
                     onClick={this.onVote} >
-                    pass</button>
+                    Pass</button>
                 <button
                     data-pass="fail"
                     onClick={this.onVote} >
-                    fail</button>
+                    Fail</button>
                 <button onClick={this.props.onReset}>Reset</button>
                 <button onClick={this.props.onReveal}>Reveal</button>
             </div>

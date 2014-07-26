@@ -22,7 +22,7 @@ var PlayerList = React.createClass({
         }
 
         return <div>
-            <ul>{elements}</ul>
+            <ul className="player-list">{elements}</ul>
             {newname}
         </div>
     },

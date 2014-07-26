@@ -1,7 +1,33 @@
-body {
+body, ul {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    background-color: #484;
     font-size: 2em;
+}
+
+nav a {
+    background-color: #242;
+    border: solid #484;
+    display: inline-block;
+    width: 33%;
+    padding: 15px 0;
+    text-align: center;
+    border-width: 0 1px 0 0;
+    font-size: 1em;
+    color: white;
+}
+
+nav a:last-child {
+    border-width: 0;
 }
 
 button {
     font-size: 1em;
+    background-color: #242;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #242;
+    padding: 3px 6px;
 }
