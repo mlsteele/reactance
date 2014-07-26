@@ -1,9 +1,13 @@
+html {
+    font-size: 100%;
+}
+
 body, ul {
     font-family: Arial;
     margin: 0;
     padding: 0;
     background-color: #484;
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 nav a {
@@ -14,7 +18,7 @@ nav a {
     padding: 15px 0;
     text-align: center;
     border-width: 0 1px 0 0;
-    font-size: 1em;
+    font-size: 1rem;
     color: white;
 }
 
@@ -23,7 +27,7 @@ nav a:last-child {
 }
 
 button {
-    font-size: 1em;
+    font-size: 1rem;
     background-color: #242;
     border: none;
     color: white;
