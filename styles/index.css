@@ -26,6 +26,10 @@ nav a:last-child {
     border-width: 0;
 }
 
+nav a.active {
+    background-color: #353;
+}
+
 button {
     font-size: 1.5rem;
     background-color: #242;

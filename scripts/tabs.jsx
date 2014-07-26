@@ -1,6 +1,8 @@
 /** @jsx React.DOM */
 
 var PT = React.PropTypes
+var cx = React.addons.classSet
+
 
 var Tabs = React.createClass({
     propTypes: {
@@ -23,6 +25,9 @@ var Tabs = React.createClass({
     renderButtons: function() {
         return _.map(this.props.tabs, function(val, name) {
             return <a 
+                className={cx({
+                    active: this.props.activeTab === name,
+                })}
                 key={name}
                 data-name={name}
                 onClick={this.props.onChangeTab.bind(null, name)} >
