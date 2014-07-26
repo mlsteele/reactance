@@ -15,6 +15,7 @@ var missionstate = new MissionState(dispatcher)
 
 uistate.load()
 gamestate.load()
+missionstate.load()
 
 var onAddName = function(name) {
     dispatch({

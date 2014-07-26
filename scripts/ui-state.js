@@ -19,7 +19,7 @@ function UIState(dispatcher) {
     }.bind(this))
 }
 
-var PERSIST_KEYS = ['tab', 'selectedPlayer', 'selectionConfirmed']
+var PERSIST_KEYS = ['tab', 'selectedPlayer', 'selectionConfirmed', 'missionRevealed']
 
 UIState.prototype.save = function() {
     var persist = {}

@@ -12,8 +12,24 @@ function MissionState(dispatcher) {
         var actions = MissionState.actions
         if (_.isFunction(actions[payload.action])) {
             actions[payload.action].call(this, payload)
+            this.save()
         }
     }.bind(this))
+}
+
+var PERSIST_KEYS = ['passes', 'fails']
+
+MissionState.prototype.save = function() {
+    var persist = {}
+    PERSIST_KEYS.forEach(key => persist[key] = this[key])
+    store.set('store.missionstate', persist)
+}
+
+MissionState.prototype.load = function() {
+    var persist = store.get('store.missionstate')
+    if (persist !== undefined) {
+        PERSIST_KEYS.forEach(key => this[key] = persist[key])
+    }
 }
 
 MissionState.actions = {}
