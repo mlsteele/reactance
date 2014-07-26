@@ -14,7 +14,9 @@ var Tabs = React.createClass({
             <nav>
             {this.renderButtons()}
             </nav>
+            <div className="tab-contents">
             {this.props.tabs[this.props.activeTab]}
+            </div>
         </div>
     },
 

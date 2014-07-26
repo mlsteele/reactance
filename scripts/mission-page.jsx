@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var PlayerList = require('./player-list.jsx')
-// var VoteCard = require('./vote-card.jsx')
 var PT = React.PropTypes
 
 var MissionPage = React.createClass({
@@ -26,10 +25,12 @@ var MissionPage = React.createClass({
             return <div>
                 <p>Votes: {votes}</p>
                 <button
+                    className="secret-focus"
                     data-pass="pass"
                     onClick={this.onVote} >
                     Pass</button>
                 <button
+                    className="secret-focus"
                     data-pass="fail"
                     onClick={this.onVote} >
                     Fail</button>
