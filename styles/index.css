@@ -7,7 +7,7 @@ body, ul {
     margin: 0;
     padding: 0;
     background-color: #484;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 nav a {
@@ -18,7 +18,7 @@ nav a {
     padding: 15px 0;
     text-align: center;
     border-width: 0 1px 0 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: white;
 }
 
@@ -31,7 +31,7 @@ nav a.active {
 }
 
 button {
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: #242;
     border: none;
     color: white;
