@@ -2,6 +2,7 @@
 
 var PlayerList = require('./player-list.jsx')
 var PT = React.PropTypes
+var cx = React.addons.classSet
 
 var MissionPage = React.createClass({
     propTypes: {
@@ -15,22 +16,28 @@ var MissionPage = React.createClass({
 
     render: function() {
         if (this.props.revealed) {
-            return <div>
+            return <div className="mission-page">
                 <p>Passes: {this.props.passes}</p>
                 <p>Fails: {this.props.fails}</p>
                 <button onClick={this.props.onReset}>Reset</button>
             </div>
         } else {
             var votes = this.props.passes + this.props.fails
-            return <div>
+            return <div className="mission-page">
                 <p>Votes: {votes}</p>
                 <button
-                    className="secret-focus"
+                    className={cx({
+                        'pass': true,
+                        'secret-focus': true,
+                    })}
                     data-pass="pass"
                     onClick={this.onVote} >
                     Pass</button>
                 <button
-                    className="secret-focus"
+                    className={cx({
+                        'fail': true,
+                        'secret-focus': true,
+                    })}
                     data-pass="fail"
                     onClick={this.onVote} >
                     Fail</button>

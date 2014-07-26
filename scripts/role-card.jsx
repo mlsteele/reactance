@@ -40,7 +40,7 @@ var RoleCard = React.createClass({
                 <PlayerList playerNames={this.props.role.spies}/>
             </div>
         }
-        return <div>
+        return <div className="role-card">
             {contents}
             <button
                 onClick={this.onClickBack}>
@@ -50,13 +50,15 @@ var RoleCard = React.createClass({
     },
 
     renderUncomfirmed: function() {
-        return <div>
+        return <div className="role-card">
             <p>Are you {this.props.playerName}</p>
             <button
+                className="confirm"
                 onClick={this.onClickConfirm}>
                 Yes
             </button>
             <button
+                className="cancel"
                 onClick={this.onClickCancel}>
                 No
             </button>
