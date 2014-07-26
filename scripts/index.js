@@ -72,3 +72,7 @@ renderApp()
 uistate.onChange(renderApp)
 gamestate.onChange(renderApp)
 missionstate.onChange(renderApp)
+
+setTimeout(function() {
+    location.reload()
+}, 2000)
