@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var PT = React.PropTypes
+var cx = React.addons.classSet
 
 var Settings = React.createClass({
     propTypes: {
@@ -10,13 +11,15 @@ var Settings = React.createClass({
     },
 
     render: function() {
-        return <div onClick={this.onChangeMerlin}>
-            <input
-                type="checkbox"
-                readOnly={true}
-                checked={this.props.settings.merlin}>
+        return <div className="settings">
+            <button
+                className={cx({
+                    'toggle': true,
+                    'active': this.props.settings.merlin,
+                })}
+                onClick={this.onChangeMerlin}>
                 Merlin
-            </input>
+            </button>
         </div>
     },
 

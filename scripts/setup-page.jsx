@@ -27,12 +27,6 @@ var SetupPage = React.createClass({
             <button onClick={this.props.onNewRoles}>New Roles</button>
         </div>
     },
-
-    onChangeMerlin: function() {
-        this.props.onChangeSettings({
-            merlin: !this.props.settings.merlin
-        })
-    },
 });
 
 module.exports = SetupPage

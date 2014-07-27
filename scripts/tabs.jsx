@@ -3,7 +3,6 @@
 var PT = React.PropTypes
 var cx = React.addons.classSet
 
-
 var Tabs = React.createClass({
     propTypes: {
         activeTab: PT.string.isRequired,
@@ -26,7 +25,7 @@ var Tabs = React.createClass({
         return _.map(this.props.tabs, function(val, name) {
             return <a 
                 className={cx({
-                    active: this.props.activeTab === name,
+                    'active': this.props.activeTab === name,
                 })}
                 key={name}
                 data-name={name}

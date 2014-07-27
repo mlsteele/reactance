@@ -69,3 +69,13 @@ button.secret-focus:focus {
     font-family: FontAwesome;
     margin-right: 7px;
 }
+
+.settings .toggle {
+    background-color: #353;
+    color: #777;
+}
+
+.settings .toggle.active {
+    background-color: #242;
+    color: #fff;
+}
