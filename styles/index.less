@@ -25,7 +25,7 @@
 @accentDisabled: lighten(@aoi, 20%);
 @lessAccent: #eee;
 
-@tabBase: @giantGoldfish;
+@tabBase: lighten(@unrealFoodPills, 30%);
 @tabActive: @unrealFoodPills;
 @tabWidth: 100% / 3;
 @tabGreed: 5%;
@@ -64,26 +64,28 @@ body {
     box-shadow: 0 0 5px fade(black, 30%);
 }
 
+nav {
+    box-shadow: 0 3px 3px -3px fade(black, 30%);
+}
+
 nav a {
-    background-color: @tabBase;
-    border: solid @pageBase;
+    background-color: @white;
+    border: solid @tabBase;
+    border-width: 5px 0 0 0;
+
     display: inline-block;
     width: @tabWidth - @tabGreed / 2;
     padding: 15px 0;
     text-align: center;
-    border-width: 0 1px 0 0;
     font-size: 1rem;
     color: @textColor;
     transition: width .2s ease-in-out;
-}
 
-nav a:last-child {
-    border-width: 0;
-}
-
-nav a.active {
-    width: @tabWidth + @tabGreed;
-    background-color: @tabActive;
+    &.active {
+        border: solid @tabActive;
+        border-width: 5px 0 0 0;
+        width: @tabWidth + @tabGreed;
+    }
 }
 
 button {
