@@ -8,6 +8,7 @@
     "browserify": "^4.2.3",
     "es6ify": "^1.2.0",
     "less": "^1.7.3",
+    "nodemon": "^1.2.1",
     "reactify": "^0.14.0",
     "watchify": "^0.10.2"
   },
