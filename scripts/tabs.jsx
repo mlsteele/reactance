@@ -16,7 +16,7 @@ var Tabs = React.createClass({
             {this.renderButtons()}
             </nav>
             <div className="tab-contents">
-            {this.props.tabs[this.props.activeTab]}
+            {this.props.tabs[this.props.activeTab].content}
             </div>
         </div>
     },
@@ -30,7 +30,7 @@ var Tabs = React.createClass({
                 key={name}
                 data-name={name}
                 onClick={this.props.onChangeTab.bind(null, name)} >
-                {name}</a>
+                {val.name}</a>
         }.bind(this)) 
     },
 });

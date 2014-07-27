@@ -59,9 +59,9 @@ var renderApp = function() {
             activeTab: uistate.tab,
             onChangeTab: dispatcher.bake('changeTab', 'tab'),
             tabs: {
-                Setup: setupPage,
-                Roles: rolesPage,
-                Mission: missionPage,
+                setup: {name: 'Setup', content: setupPage},
+                roles: {name: 'Roles', content: rolesPage},
+                mission: {name: 'Mission', content: missionPage},
             }
         }),
         document.getElementById('app')
