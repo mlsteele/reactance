@@ -1,3 +1,6 @@
+@desktop:   ~"only screen and (min-width: 960px)";
+@tablet:    ~"only screen and (min-width: 720px) and (max-width: 959px)";
+
 @baseGreen: #484;
 @lightGreen: lighten(@baseGreen, 10%);
 @lighterGreen: lighten(@lightGreen, 10%);
@@ -17,7 +20,7 @@
 
 @textColor: #333;
 @pageBase: @white;
-@background: @lightGray;
+@background: @white;
 @accentColor: @aoi;
 @accentDisabled: lighten(@aoi, 20%);
 @lessAccent: #eee;
@@ -58,6 +61,7 @@ body {
     min-height: 100%;
     max-width: 600px;
     margin: 0 auto;
+    box-shadow: 0 0 5px fade(black, 30%);
 }
 
 nav a {
@@ -99,6 +103,9 @@ button.secret-focus:focus {
 
 .tab-contents {
     padding: 15px;
+    @media @desktop {
+        padding: 30px;
+    }
 }
 
 .player-list {
