@@ -21,7 +21,7 @@ var PlayerList = React.createClass({
                 onAddName={this.props.onAddName} />
         }
 
-        return <div>
+        return <div><h2>Players</h2>
             <ul className="player-list">{elements}</ul>
             {newname}
         </div>
