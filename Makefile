@@ -1,4 +1,4 @@
-.PHONY: all build watch less
+.PHONY: all build watch less less-long watch-less
 BROWSERIFY=node_modules/.bin/browserify
 WATCHIFY=node_modules/.bin/watchify
 NODEMON=node_modules/.bin/nodemon
@@ -14,5 +14,9 @@ watch:
 less:
 	lessc styles/index.less styles/bundle.css
 
+# this target exists because nodeomon can't handle short-running tasks.
+less-long: less
+	sleep 999999999
+
 watch-less:
-	$(NODEMON) --watch styles/*.less --exec "make less"
+	$(NODEMON) --watch styles/*.less --exec "make less-long"
