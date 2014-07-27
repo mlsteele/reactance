@@ -1,8 +1,10 @@
-.PHONY: build watch
+.PHONY: all build watch less
 BROWSERIFY=node_modules/.bin/browserify
 WATCHIFY=node_modules/.bin/watchify
 
-build:
+all: js less
+
+js:
 	$(BROWSERIFY) scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug
 
 watch:
