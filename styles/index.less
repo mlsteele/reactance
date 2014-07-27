@@ -3,6 +3,8 @@
 @lighterGreen: lighten(@lightGreen, 10%);
 @darkGreen: darken(@baseGreen, 10%);
 
+@baseRed: #c33;
+
 @tabBase: @darkGreen;
 @tabActive: lighten(@tabBase, 5%);
 @tabWidth: 100% / 3;
@@ -139,5 +141,14 @@ button.secret-focus:focus {
 
     figcaption {
         font-size: 1.5rem;
+    }
+}
+
+.mission-page button {
+    width: 100%;
+
+    &.fail {
+        background-color: @baseRed;
+        border-color: darken(@baseRed, 20%);
     }
 }
