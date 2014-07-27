@@ -1,4 +1,12 @@
-body, ul {
+@baseGreen: #484;
+@lightGreen: lighten(@baseGreen, 10%);
+@darkGreen: darken(@baseGreen, 10%);
+
+@tabBase: @darkGreen;
+@tabActive: lighten(@tabBase, 5%);
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -8,23 +16,24 @@ html {
 }
 
 body {
-    background-color: #595;
+    background-color: @darkGreen;
     font-family: Arial;
     font-size: 1rem;
 }
 
 #app {
-    background-color: #484;
+    background-color: @baseGreen;
     height: 100%;
+    overflow: auto;
     max-width: 600px;
     margin: 0 auto;
 }
 
 nav a {
-    background-color: #242;
+    background-color: @tabBase;
     border: solid #484;
     display: inline-block;
-    width: 33%;
+    width: 33.3333%;
     padding: 15px 0;
     text-align: center;
     border-width: 0 1px 0 0;
@@ -37,7 +46,7 @@ nav a:last-child {
 }
 
 nav a.active {
-    background-color: #353;
+    background-color: @tabActive;
 }
 
 button {
