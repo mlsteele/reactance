@@ -24,7 +24,10 @@ var MissionPage = React.createClass({
                 <LabeledNumber
                     name="Fails"
                     num={this.props.fails} />
-                <button onClick={this.props.onReset}>Reset</button>
+                <button
+                    className="reset"
+                    onClick={this.props.onReset} >
+                    Reset</button>
             </div>
         } else {
             var votes = this.props.passes + this.props.fails
@@ -48,7 +51,10 @@ var MissionPage = React.createClass({
                     data-pass="fail"
                     onClick={this.onVote} >
                     Fail</button>
-                <button onClick={this.props.onReset}>Reset</button>
+                <button
+                    className="reset"
+                    onClick={this.props.onReset} >
+                    Reset</button>
                 <button onClick={this.props.onReveal}>Reveal</button>
             </div>
         }

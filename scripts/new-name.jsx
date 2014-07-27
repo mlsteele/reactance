@@ -17,7 +17,7 @@ var NewName = React.createClass({
                 value={this.state.text}
                 onChange={this.onChange}
                 ></input>
-            <button>
+            <button className="new-player">
                 Add {this.state.text}</button>
         </form>
     },

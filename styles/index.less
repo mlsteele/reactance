@@ -57,6 +57,7 @@ body {
 }
 
 #app {
+    position: relative;
     background-color: @pageBase;
     min-height: 100%;
     max-width: 600px;
@@ -126,12 +127,6 @@ button.secret-focus:focus {
     margin-right: 7px;
 }
 
-.mission-page .fail:before {
-    content: "\f1e2";
-    font-family: FontAwesome;
-    margin-right: 7px;
-}
-
 .settings .toggle {
     background-color: @accentDisabled;
 }
@@ -174,5 +169,24 @@ button.secret-focus:focus {
     &.fail {
         background-color: @baseRed;
         border-color: darken(@baseRed, 20%);
+    }
+
+    &.fail:before {
+        content: "\f1e2";
+        font-family: FontAwesome;
+        margin-right: 7px;
+    }
+
+    &.reset {
+        width: 100px;
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+    }
+
+    &.reset:before {
+        content: "\f01e";
+        font-family: FontAwesome;
+        margin-right: 7px;
     }
 }
