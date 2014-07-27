@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var PlayerList = require('./player-list.jsx')
+var LabeledNumber = require('./labeled-number.jsx')
 var PT = React.PropTypes
 var cx = React.addons.classSet
 
@@ -17,14 +18,20 @@ var MissionPage = React.createClass({
     render: function() {
         if (this.props.revealed) {
             return <div className="mission-page">
-                <p>Passes: {this.props.passes}</p>
-                <p>Fails: {this.props.fails}</p>
+                <LabeledNumber
+                    name="Passes"
+                    num={this.props.passes} />
+                <LabeledNumber
+                    name="Fails"
+                    num={this.props.fails} />
                 <button onClick={this.props.onReset}>Reset</button>
             </div>
         } else {
             var votes = this.props.passes + this.props.fails
             return <div className="mission-page">
-                <p>Votes: {votes}</p>
+                <LabeledNumber
+                    name="Votes"
+                    num={votes} />
                 <button
                     className={cx({
                         'pass': true,
