@@ -28,7 +28,7 @@
 @tabBase: lighten(@unrealFoodPills, 30%);
 @tabActive: @unrealFoodPills;
 @tabWidth: 100% / 3;
-@tabGreed: 5%;
+@tabGreed: 0%;
 
 .darken-gradient (@startColor: #eee) {
     @endColor: darken(@startColor, 2%);
@@ -70,8 +70,7 @@ nav {
 
 nav a {
     background-color: @white;
-    border: solid @tabBase;
-    border-width: 5px 0 0 0;
+    border-top: 5px solid @tabBase;
 
     display: inline-block;
     width: @tabWidth - @tabGreed / 2;
@@ -79,12 +78,13 @@ nav a {
     text-align: center;
     font-size: 1rem;
     color: @textColor;
-    transition: width .2s ease-in-out;
+    transition: width .15s ease-in-out;
 
     &.active {
-        border: solid @tabActive;
-        border-width: 5px 0 0 0;
+        background-color: fade(@tabActive, 10%);
+        border-top: 5px solid @tabActive;
         width: @tabWidth + @tabGreed;
+        transition: background-color 0.1s ease-in-out;
     }
 }
 
