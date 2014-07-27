@@ -4,6 +4,8 @@
 
 @tabBase: @darkGreen;
 @tabActive: lighten(@tabBase, 5%);
+@tabWidth: 100% / 3;
+@tabGreed: 5%;
 
 * {
     box-sizing: border-box;
@@ -33,12 +35,13 @@ nav a {
     background-color: @tabBase;
     border: solid #484;
     display: inline-block;
-    width: 33.3333%;
+    width: @tabWidth - @tabGreed / 2;
     padding: 15px 0;
     text-align: center;
     border-width: 0 1px 0 0;
     font-size: 1rem;
     color: white;
+    transition: width .2s ease-in-out;
 }
 
 nav a:last-child {
@@ -46,6 +49,7 @@ nav a:last-child {
 }
 
 nav a.active {
+    width: @tabWidth + @tabGreed;
     background-color: @tabActive;
 }
 
