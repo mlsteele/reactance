@@ -5,8 +5,25 @@
 
 @baseRed: #c33;
 
-@tabBase: @darkGreen;
-@tabActive: lighten(@tabBase, 5%);
+@white: #fff;
+@gray: #ccc;
+@lightGray: lighten(@gray, 10%);
+
+@beachStorm: #E0E4CC;       // off white
+@cleanPondwater: #A7DBD8;   // light blue
+@aoi: #69D2E7;              // brighter light blue
+@giantGoldfish: #F38630;    // orange
+@unrealFoodPills: #FA6900;  // brighter orange
+
+@textColor: #333;
+@pageBase: @white;
+@background: @lightGray;
+@accentColor: @aoi;
+@accentDisabled: lighten(@aoi, 20%);
+@lessAccent: #eee;
+
+@tabBase: @giantGoldfish;
+@tabActive: @unrealFoodPills;
 @tabWidth: 100% / 3;
 @tabGreed: 5%;
 
@@ -31,13 +48,13 @@ html {
 }
 
 body {
-    background-color: @darkGreen;
+    background-color: @background;
     font-family: Arial;
     font-size: 1rem;
 }
 
 #app {
-    background-color: @baseGreen;
+    background-color: @pageBase;
     min-height: 100%;
     max-width: 600px;
     margin: 0 auto;
@@ -45,14 +62,14 @@ body {
 
 nav a {
     background-color: @tabBase;
-    border: solid #484;
+    border: solid @pageBase;
     display: inline-block;
     width: @tabWidth - @tabGreed / 2;
     padding: 15px 0;
     text-align: center;
     border-width: 0 1px 0 0;
     font-size: 1rem;
-    color: white;
+    color: @textColor;
     transition: width .2s ease-in-out;
 }
 
@@ -67,9 +84,9 @@ nav a.active {
 
 button {
     font-size: 1rem;
-    background-color: #242;
+    background-color: @accentColor;
     border: none;
-    color: white;
+    color: @textColor;
     border-radius: 3px;
     border: 1px solid #242;
     padding: 15px 25px;
@@ -107,26 +124,24 @@ button.secret-focus:focus {
 }
 
 .settings .toggle {
-    background-color: #353;
-    color: #777;
+    background-color: @accentDisabled;
 }
 
 .settings .toggle.active {
-    background-color: #242;
-    color: #fff;
+    background-color: @accentColor;
 }
 
 .player-list li {
     // .darken-gradient(@lightGreen);
-    background-color: @lightGreen;
+    background-color: @lessAccent;
     margin-bottom: 5px;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     text-align: right;
 }
 .player-list li span {
     float: left;
     padding:16px;
-    text-shadow: 1px 1px @lighterGreen;
+    text-shadow: 1px 1px @white;
 }
 .player-list li button {
     margin: 0;
