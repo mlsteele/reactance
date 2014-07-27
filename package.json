@@ -7,6 +7,7 @@
     "backbone-events-standalone": "^0.2.2",
     "browserify": "^4.2.3",
     "es6ify": "^1.2.0",
+    "less": "^1.7.3",
     "reactify": "^0.14.0",
     "watchify": "^0.10.2"
   },
