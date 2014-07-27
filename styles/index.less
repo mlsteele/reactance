@@ -1,11 +1,22 @@
 @baseGreen: #484;
 @lightGreen: lighten(@baseGreen, 10%);
+@lighterGreen: lighten(@lightGreen, 10%);
 @darkGreen: darken(@baseGreen, 10%);
 
 @tabBase: @darkGreen;
 @tabActive: lighten(@tabBase, 5%);
 @tabWidth: 100% / 3;
 @tabGreed: 5%;
+
+.darken-gradient (@startColor: #eee) {
+    @endColor: darken(@startColor, 2%);
+    background-color: @startColor;
+    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background: -webkit-linear-gradient(top, @startColor, @endColor);
+    background: -moz-linear-gradient(top, @startColor, @endColor);
+    background: -ms-linear-gradient(top, @startColor, @endColor);
+    background: -o-linear-gradient(top, @startColor, @endColor);
+}
 
 * {
     box-sizing: border-box;
@@ -104,9 +115,19 @@ button.secret-focus:focus {
 }
 
 .player-list li {
-    border-bottom: 1px solid #595;
+    // .darken-gradient(@lightGreen);
+    background-color: @lightGreen;
+    margin-bottom: 5px;
+    border-radius: 0 5px 5px 0;
     text-align: right;
 }
 .player-list li span {
     float: left;
+    padding:16px;
+    text-shadow: 1px 1px @lighterGreen;
+}
+.player-list li button {
+    margin: 0;
+    border-radius: 0 5px 5px 0;
+    // .darken-gradient(@darkGreen);
 }
