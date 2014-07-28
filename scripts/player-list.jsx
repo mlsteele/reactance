@@ -52,6 +52,7 @@ var PlayerList = React.createClass({
         }
 
         return <li key={name}>
+            <div className="namelet">{name[0]}</div>
             <span className="name">{name}</span>
             {showButton}
             {deleteButton}
