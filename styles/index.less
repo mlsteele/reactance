@@ -130,10 +130,12 @@ button.secret-focus:focus {
 
 .settings .toggle {
     background-color: @accentDisabled;
+    .darken-gradient(@accentDisabled);
 }
 
 .settings .toggle.active {
     background-color: @accentColor;
+    .darken-gradient(@accentColor);
 }
 
 .player-list {
@@ -148,13 +150,14 @@ button.secret-focus:focus {
         // background-color: @lessAccent;
 
         &:before {
+            @scrunch: 0%;
             content: "";
             position: absolute;
-            width: 100%;
+            width: 100% - 2 * @scrunch;
             height: 0;
             top: -10px;
-            right: 0;
-            border-top: 1px solid lighten(black, 90%);
+            left: @scrunch;
+            border-top: 1px solid lighten(black, 95%);
         }
 
         &:first-child:before {
