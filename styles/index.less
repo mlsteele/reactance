@@ -31,7 +31,8 @@
 @tabGreed: 0%;
 
 .darken-gradient (@startColor: #eee) {
-    @endColor: darken(@startColor, 2%);
+    // @endColor: darken(@startColor, lightness(@startColor) / 10);
+    @endColor: darken(@startColor, 3%);
     background-color: @startColor;
     background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
     background: -webkit-linear-gradient(top, @startColor, @endColor);
@@ -92,13 +93,16 @@ nav a {
 button {
     font-size: 1rem;
     background-color: @accentColor;
+    .darken-gradient(@accentColor);
     border: none;
     color: @textColor;
+    font-family: Roboto;
     border-radius: 3px;
     border: none;
     padding: 15px 25px;
     margin: 5px;
     outline: none;
+    text-shadow: 0 1px 1px fade(white, 30%);
 }
 
 button.secret-focus:focus {
@@ -192,6 +196,8 @@ button.secret-focus:focus {
 
     &.fail {
         background-color: @baseRed;
+        .darken-gradient(@baseRed);
+        color: black;
         border-color: darken(@baseRed, 20%);
     }
 
