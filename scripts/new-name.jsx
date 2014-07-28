@@ -17,7 +17,7 @@ var NewName = React.createClass({
                 className="name"
                 value={this.state.text}
                 placeholder="Another Player"
-                autocapitalize="on"
+                autoCapitalize="on"
                 onChange={this.onChange}
                 ></input>
             <button className="new-player">
