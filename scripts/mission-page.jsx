@@ -17,13 +17,15 @@ var MissionPage = React.createClass({
 
     render: function() {
         if (this.props.revealed) {
+            var passLabel = this.props.passes === 1 ? "Pass" : "Passes"
+            var failLabel = this.props.fails === 1 ? "Fail" : "Fails"
             return <div className="mission-page revealed">
                 <div className="vote-holder">
                     <LabeledNumber
-                        name="Passes"
+                        name={passLabel}
                         num={this.props.passes} />
                     <LabeledNumber
-                        name="Fails"
+                        name={failLabel}
                         num={this.props.fails} />
                 </div>
                 <button

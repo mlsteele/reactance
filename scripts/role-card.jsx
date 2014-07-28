@@ -26,18 +26,22 @@ var RoleCard = React.createClass({
         var contents = null
         if (role.spy) {
             var spiesText = this.props.role.otherSpies.join(', ')
+            var noun = this.props.role.otherSpies.length == 1 ? "spy" : "spies"
+            var verb = this.props.role.otherSpies.length == 1 ? "is" : "are"
             contents = <div>
                 <p>You're a spy!</p>
-                <p>The other spies are: {spiesText}</p>
+                <p>The other {noun} {verb}: {spiesText}</p>
             </div>
         } else {
             contents = <p>You are a resistance member.</p>
         }
         if (role.merlin) {
             var spiesText = this.props.role.spies.join(', ')
+            var noun = this.props.role.spies.length === 1 ? "spy" : "spies"
+            var verb = this.props.role.spies.length === 1 ? "is" : "are"
             contents = <div>
                 <p>You are the merlin.</p>
-                <p>The spies are: {spiesText}</p>
+                <p>The {noun} {verb}: {spiesText}</p>
             </div>
         }
         return <div className="role-card">
