@@ -13,10 +13,10 @@ var NewName = React.createClass({
 
     render: function() {
         return <form onSubmit={this.onSubmit}>
-            <input type="text"
+            <input type="name"
                 className="name"
                 value={this.state.text}
-                placeholder="Jenkins"
+                placeholder="Another Player"
                 autocapitalize="on"
                 onChange={this.onChange}
                 ></input>
