@@ -51,7 +51,7 @@ var RoleCard = React.createClass({
 
     renderUncomfirmed: function() {
         return <div className="role-card">
-            <p>Are you {this.props.playerName}</p>
+            <p>Are you {this.props.playerName}?</p>
             <button
                 className="confirm"
                 onClick={this.onClickConfirm}>

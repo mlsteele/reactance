@@ -17,13 +17,15 @@ var MissionPage = React.createClass({
 
     render: function() {
         if (this.props.revealed) {
-            return <div className="mission-page">
-                <LabeledNumber
-                    name="Passes"
-                    num={this.props.passes} />
-                <LabeledNumber
-                    name="Fails"
-                    num={this.props.fails} />
+            return <div className="mission-page revealed">
+                <div className="vote-holder">
+                    <LabeledNumber
+                        name="Passes"
+                        num={this.props.passes} />
+                    <LabeledNumber
+                        name="Fails"
+                        num={this.props.fails} />
+                </div>
                 <button
                     className="reset"
                     onClick={this.props.onReset} >
