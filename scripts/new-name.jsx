@@ -14,7 +14,9 @@ var NewName = React.createClass({
     render: function() {
         return <form onSubmit={this.onSubmit}>
             <input type="text"
+                className="name"
                 value={this.state.text}
+                placeholder="Jenkins"
                 onChange={this.onChange}
                 ></input>
             <button className="new-player">

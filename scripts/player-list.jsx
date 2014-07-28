@@ -17,13 +17,15 @@ var PlayerList = React.createClass({
 
         var newname = null
         if (this.props.onAddName) {
-            newname = <NewName
-                onAddName={this.props.onAddName} />
+            newname = <li><NewName
+                onAddName={this.props.onAddName} /></li>
         }
 
         return <div><h2>Players</h2>
-            <ul className="player-list">{elements}</ul>
-            {newname}
+            <ul className="player-list">
+                {elements}
+                {newname}
+            </ul>
         </div>
     },
 
@@ -50,7 +52,7 @@ var PlayerList = React.createClass({
         }
 
         return <li key={name}>
-            <span>{name}</span>
+            <span className="name">{name}</span>
             {showButton}
             {deleteButton}
         </li>
