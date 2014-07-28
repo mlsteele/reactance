@@ -17,10 +17,11 @@ var NewName = React.createClass({
                 className="name"
                 value={this.state.text}
                 placeholder="Jenkins"
+                autocapitalize="on"
                 onChange={this.onChange}
                 ></input>
             <button className="new-player">
-                Add {this.state.text}</button>
+                Add</button>
         </form>
     },
 
