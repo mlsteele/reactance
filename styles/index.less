@@ -116,16 +116,22 @@ button.secret-focus:focus {
     }
 }
 
-.role-card .confirm:before {
-    content: "\f00c";
-    font-family: FontAwesome;
-    margin-right: 7px;
-}
+.role-card {
 
-.role-card .cancel:before {
-    content: "\f05e";
-    font-family: FontAwesome;
-    margin-right: 7px;
+    .spy {color: red;}
+    .resistance {color: green;}
+
+    .cancel:before {
+        content: "\f05e";
+        font-family: FontAwesome;
+        margin-right: 7px;
+    }
+
+    .confirm:before {
+        content: "\f00c";
+        font-family: FontAwesome;
+        margin-right: 7px;
+    }
 }
 
 .settings .toggle {

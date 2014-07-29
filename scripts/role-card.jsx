@@ -31,41 +31,48 @@ var RoleCard = React.createClass({
         var spyNoun = theSpies.length == 1 ? "spy" : "spies"
         var spyVerb = theSpies.length == 1 ? "is" : "are"
         var other = role.spy? "other" : ""
-        var spiesBlock = <p>The {other} {spyNoun} {spyVerb}: {spiesText}</p>
+        var spiesBlock = <p>The {other} {spyNoun} {spyVerb}: <span className='spy'>{spiesText}</span></p>
         var extraInfo = <div></div>
+        var description = <p></p>
 
-        var name = "resistance"
+        var name = <span className='resistance'>resistance</span>
 
         if (role.spy) {
-            name = "a spy";
+            name = <span className='spy'>a spy</span>;
             extraInfo = spiesBlock;
         }
         if (role.percival) {
-            name = "Percival"
+            name = <span className='resistance'>Percival</span>
             var theMerlins = role.merlins;
             var merlinsText = theMerlins.join(', ');
             var merlinNoun = theMerlins.length == 1 ? 'Merlin' : 'Merlins';
             var merlinVerb = theMerlins.length == 1 ? 'is' : 'are';
             var merlinsBlock = <p>The {merlinNoun} {merlinVerb}: {merlinsText}</p>
             extraInfo = merlinsBlock;
+            description = <p>You see <span className='resistance'>Merlin</span> and <span className='spy'>Morgana</span> both as Merlin.</p>
         }
         if (role.merlin) {
-            name = "Merlin";
+            name = <span className='resistance'>Merlin</span>;
             extraInfo = spiesBlock;
+            description = <p>If the spies discover your identity, resistance loses!</p>
         }
         if (role.mordred) { 
-            name = "Mordred"
+            name = <span className='spy'>Mordred</span>
+            description = <p>You are invisible to <span className='resistance'>Merlin</span>.</p>
         }
         if (role.morgana) {
-            name = "Morgana"
+            name = <span className='spy'>Morgana</span>
+            description = <p>You appear as <span className='resistance'>Merlin</span> to <span className='resistance'>Percival</span>.</p>
         }
         if (role.oberon) {
-            name = "Oberon"
+            name = <span className='spy'>Oberon</span>
             extraInfo = <div></div>
+            description = <p>You can not see the other spies.</p>
         }
         contents = <div>
             <p>You are {name}!</p>
             {extraInfo}
+            {description}
         </div>
 
         return <div className="role-card">
