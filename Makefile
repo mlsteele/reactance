@@ -6,6 +6,10 @@ LESSC=node_modules/.bin/lessc
 
 all: js less
 
+clean:
+	rm -f scripts/bundle.js
+	rm -f scripts/bundle.css
+
 js:
 	$(BROWSERIFY) scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug
 
