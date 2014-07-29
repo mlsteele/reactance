@@ -7,7 +7,11 @@ function GameState(dispatcher) {
 
     this.playerNames = ['Miles', 'Jess', 'Brandon', 'Ciara', 'Chris']
     this.settings = {
-        merlin: false,
+        merlin: true,
+        mordred: false,
+        percival: false,
+        morgana: false,
+        oberon: false
     }
     this.roles = null
     // Reason that roles cannot be assigned.
@@ -48,11 +52,15 @@ GameState.prototype.load = function() {
 GameState.prototype.getRole = function(name) {
     if (this.roles === null) return null
     var role = _.extend({}, this.roles[name])
-    if (role.spy) {
+    if (role.spy && !role.oberon) {
         role.otherSpies = _.without(this.getSpies(), name)
     }
     if (role.merlin) {
-        role.spies = this.getSpies()
+        role.spies = _.filter(this.getSpies(), (name) =>
+            !this.roles[name].mordred);
+    }
+    if (role.percival) {
+        role.merlins = this.getMerlins()
     }
     return role
 }
@@ -60,6 +68,11 @@ GameState.prototype.getRole = function(name) {
 GameState.prototype.getSpies = function() {
     return _.filter(this.playerNames, (name) =>
         this.roles[name].spy)
+}
+
+GameState.prototype.getMerlins = function() {
+    return _.filter(this.playerNames, (name) =>
+        this.roles[name].morgana || this.roles[name].merlin);
 }
 
 /**
@@ -84,9 +97,34 @@ GameState.prototype.assignRoles = function() {
         }
     })
 
+    // Keep track of players who haven't been assigned special roles
+    var unassignedSpies = shuffledNames.slice(0, numSpies);
+    var unassignedResistance = shuffledNames.slice(numSpies);
+
     if (this.settings.merlin) {
-        var merlinName = shuffledNames[numSpies]
-        this.roles[merlinName].merlin = true
+        var merlinName = unassignedResistance[0];
+        unassignedResistance.splice(0,1);
+        this.roles[merlinName].merlin = true;
+    }
+    if (this.settings.morgana) {
+        var morganaName = unassignedSpies[0];
+        unassignedSpies.splice(0,1);
+        this.roles[morganaName].morgana = true;
+    }
+    if (this.settings.percival) {
+        var percivalName = unassignedResistance[0];
+        unassignedResistance.splice(0,1);
+        this.roles[percivalName].percival = true;
+    }
+    if (this.settings.mordred) {
+        var mordredName = unassignedSpies[0];
+        unassignedSpies.splice(0,1);
+        this.roles[mordredName].mordred = true;
+    }
+    if (this.settings.oberon) {
+        var oberonName = unassignedSpies[0];
+        unassignedSpies.splice(0,1);
+        this.roles[oberonName].oberon = true;
     }
 
     this._emitChange()
@@ -109,6 +147,11 @@ GameState.prototype.updateRoles = function(clear) {
         this.disabledReason = 'tooFew'
     } else if (this.playerNames.length > 10) {
         this.disabledReason = 'tooMany'
+    } else if (this.playerNames.length < 7 
+            && this.settings.mordred 
+            && this.settings.morgana 
+            && this.settings.oberon) {
+        this.disabledReason = 'tooFew'
     } else {
         this.disabledReason = null
         this.assignRoles()

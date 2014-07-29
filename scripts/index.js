@@ -15,7 +15,7 @@ var gamestate = new GameState(dispatcher)
 var missionstate = new MissionState(dispatcher)
 
 // Increase this number after every datastore schema breaking change.
-store_reset(1)
+store_reset(2)
 uistate.load()
 gamestate.load()
 missionstate.load()
