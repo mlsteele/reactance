@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var NewName = require('./new-name.jsx')
+var colorForPlayer = require('./color.js')
 var PT = React.PropTypes
 
 var PlayerList = React.createClass({
@@ -37,7 +38,7 @@ var PlayerList = React.createClass({
             var clickHandler = function() {
                 this.props.onClickShow(name)
             }.bind(this)
-            showButton = <button 
+            showButton = <button
                 onClick={clickHandler}>
                 Role</button>
         }
@@ -46,13 +47,14 @@ var PlayerList = React.createClass({
             var clickHandler = function() {
                 this.props.onDeleteName(name)
             }.bind(this)
-            deleteButton = <button 
+            deleteButton = <button
                 onClick={clickHandler}>
                 Delete</button>
         }
+        var style = {'background-color': colorForPlayer(name)}
 
         return <li key={name}>
-            <div className="namelet">{name[0]}</div>
+            <div className="namelet" style={style}>{name[0]}</div>
             <span className="name">{name}</span>
             {showButton}
             {deleteButton}
