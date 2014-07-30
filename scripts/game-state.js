@@ -52,8 +52,9 @@ GameState.prototype.load = function() {
 GameState.prototype.getRole = function(name) {
     if (this.roles === null) return null
     var role = _.extend({}, this.roles[name])
-    if (role.spy && !role.oberon) {
-        role.otherSpies = _.without(this.getSpies(), name)
+    if (role.spy) {
+        role.otherSpies = _.filter(this.getSpies(), (theirName) =>
+            !this.roles[theirName].oberon && name != theirName);
     }
     if (role.merlin) {
         role.spies = _.filter(this.getSpies(), (name) =>
