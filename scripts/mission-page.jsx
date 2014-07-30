@@ -4,8 +4,11 @@ var PlayerList = require('./player-list.jsx')
 var LabeledNumber = require('./labeled-number.jsx')
 var PT = React.PropTypes
 var cx = React.addons.classSet
+var PureRenderMixin = React.addons.PureRenderMixin
 
 var MissionPage = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         numPlayers: PT.number.isRequired,
         passes: PT.number.isRequired,

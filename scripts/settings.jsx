@@ -2,8 +2,11 @@
 
 var PT = React.PropTypes
 var cx = React.addons.classSet
+var PureRenderMixin = React.addons.PureRenderMixin
 
 var Settings = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         // Mapping of settings to their values.
         settings: PT.object.isRequired,

@@ -3,8 +3,11 @@
 var NewName = require('./new-name.jsx')
 var colorForPlayer = require('./color.js')
 var PT = React.PropTypes
+var PureRenderMixin = React.addons.PureRenderMixin
 
 var PlayerList = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         playerNames: PT.array.isRequired,
         onClickShow: PT.func,

@@ -2,8 +2,11 @@
 
 var PlayerList = require('./player-list.jsx')
 var PT = React.PropTypes
+var PureRenderMixin = React.addons.PureRenderMixin
 
 var RoleCard = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         confirmed: PT.bool.isRequired,
         playerName: PT.string.isRequired,

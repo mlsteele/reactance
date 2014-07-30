@@ -3,8 +3,11 @@
 var PlayerList = require('./player-list.jsx')
 var RoleCard = require('./role-card.jsx')
 var PT = React.PropTypes
+var PureRenderMixin = React.addons.PureRenderMixin
 
 var RolesPage = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         disabledReason: PT.oneOf(['tooFew', 'tooMany']),
         playerNames: PT.array.isRequired,

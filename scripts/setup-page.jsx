@@ -3,8 +3,11 @@
 var PlayerList = require('./player-list.jsx')
 var Settings = require('./settings.jsx')
 var PT = React.PropTypes
+var PureRenderMixin = React.addons.PureRenderMixin
 
 var SetupPage = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         playerNames: PT.array.isRequired,
         // Mapping of settings to their values.

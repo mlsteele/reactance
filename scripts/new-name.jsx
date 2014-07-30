@@ -1,8 +1,11 @@
 /** @jsx React.DOM */
 
 var PT = React.PropTypes
+var PureRenderMixin = React.addons.PureRenderMixin;
 
 var NewName = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         onAddName: PT.func,
     },

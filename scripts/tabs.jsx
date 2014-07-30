@@ -2,8 +2,11 @@
 
 var PT = React.PropTypes
 var cx = React.addons.classSet
+var PureRenderMixin = React.addons.PureRenderMixin
 
 var Tabs = React.createClass({
+    mixins: [PureRenderMixin],
+
     propTypes: {
         activeTab: PT.string.isRequired,
         onChangeTab: PT.func.isRequired,
