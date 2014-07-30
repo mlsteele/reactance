@@ -1,6 +1,7 @@
 # Reactance
+A [resistance](http://en.m.wikipedia.org/wiki/The_Resistance_(game)) game helper written in react.
 
-A resistance game helper written in react.
+![Screenshot](/images/screenshot.png?raw=true)
 
 # Use
 Run `make` to build the javascript and css bundles.
