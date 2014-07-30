@@ -7,6 +7,7 @@ var cx = React.addons.classSet
 
 var MissionPage = React.createClass({
     propTypes: {
+        numPlayers: PT.number.isRequired,
         passes: PT.number.isRequired,
         fails:  PT.number.isRequired,
         revealed:  PT.bool.isRequired,
@@ -16,10 +17,23 @@ var MissionPage = React.createClass({
     },
 
     render: function() {
+        var missionNumbersGivenPlayers = {
+            5: ["2", "3", "2", "3", "3"],
+            6: ["2", "3", "4", "3", "4"],
+            7: ["2", "3", "3", "4*", "4"],
+            8: ["3", "4", "4", "5*", "5"],
+            9: ["3", "4", "4", "5*", "5"],
+            10: ["3", "4", "4", "5*", "5"],
+        }
+        var missionNumbers = <div className="mission-numbers">
+            {missionNumbersGivenPlayers[this.props.numPlayers].join(" ")}
+        </div>
         if (this.props.revealed) {
             var passLabel = this.props.passes === 1 ? "Pass" : "Passes"
             var failLabel = this.props.fails === 1 ? "Fail" : "Fails"
+            
             return <div className="mission-page revealed">
+                {missionNumbers}
                 <div className="vote-holder">
                     <LabeledNumber
                         name={passLabel}
@@ -36,6 +50,7 @@ var MissionPage = React.createClass({
         } else {
             var votes = this.props.passes + this.props.fails
             return <div className="mission-page">
+                {missionNumbers}
                 <LabeledNumber
                     name="Votes"
                     num={votes} />

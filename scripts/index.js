@@ -49,6 +49,7 @@ var renderApp = function() {
     })
 
     var missionPage = MissionPage({
+        numPlayers: gamestate.playerNames.length,
         passes: missionstate.passes,
         fails: missionstate.fails,
         revealed: uistate.missionRevealed,
