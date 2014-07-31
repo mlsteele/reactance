@@ -12,6 +12,7 @@ var Settings = React.createClass({
 
     render: function() {
         return <div className="settings">
+            <h2>Special Roles</h2>
             <button
                 className={cx({
                     'toggle': true,

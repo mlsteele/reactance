@@ -47,9 +47,9 @@ var PlayerList = React.createClass({
             var clickHandler = function() {
                 this.props.onDeleteName(name)
             }.bind(this)
-            deleteButton = <button
+            deleteButton = <button className='delete'
                 onClick={clickHandler}>
-                Delete</button>
+                </button>
         }
         var style = {'background-color': colorForPlayer(name)}
 

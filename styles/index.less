@@ -109,6 +109,9 @@ button.secret-focus:focus {
     outline: none;
 }
 
+h2 {
+    font-weight: 300;
+}
 .tab-contents {
     padding: 15px;
     @media @desktop {
@@ -135,13 +138,24 @@ button.secret-focus:focus {
 }
 
 .settings .toggle {
-    background-color: @accentDisabled;
-    .darken-gradient(@accentDisabled);
+    background: none;
+    color: rgba(0,0,0,.57);
+    text-transform: uppercase;
+    margin:12px 6px;
+    padding: 8px 12px;
+
+    &:hover {
+        background-color: rgba(0,0,0,0.25);
+    }
 }
 
 .settings .toggle.active {
-    background-color: @accentColor;
-    .darken-gradient(@accentColor);
+    color: #5ccee5;
+
+    &:hover {
+        color: white;
+        background-color: @aoi;
+    }
 }
 
 .player-list {
@@ -216,6 +230,20 @@ button.secret-focus:focus {
         height: @itemheight;
         margin: 0;
         padding: 0 20px;
+    }
+
+    li .delete {
+        background: none;
+        &:before {
+            content: "\f014";
+            font-family: FontAwesome;
+            font-size: 1.2em;
+        }
+
+        &:hover {
+            color: #c0392b;
+            cursor: pointer;
+        }
     }
 }
 

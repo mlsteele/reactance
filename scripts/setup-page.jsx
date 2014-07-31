@@ -24,7 +24,7 @@ var SetupPage = React.createClass({
             <Settings
                 settings={this.props.settings}
                 onChangeSettings={this.props.onChangeSettings} />
-            <button onClick={this.props.onNewRoles}>New Roles</button>
+            <button onClick={this.props.onNewRoles}>Shuffle Roles</button>
         </div>
     },
 });
