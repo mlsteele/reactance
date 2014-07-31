@@ -55,6 +55,10 @@ GameState.prototype.getRole = function(name) {
     if (role.spy) {
         role.otherSpies = _.filter(this.getSpies(), (theirName) =>
             !this.roles[theirName].oberon && name != theirName);
+
+        if (this.settings.oberon) {
+            role.hasOberon = true;
+        }
     }
     if (role.merlin) {
         role.spies = _.filter(this.getSpies(), (name) =>
@@ -148,9 +152,9 @@ GameState.prototype.updateRoles = function(clear) {
         this.disabledReason = 'tooFew'
     } else if (this.playerNames.length > 10) {
         this.disabledReason = 'tooMany'
-    } else if (this.playerNames.length < 7 
-            && this.settings.mordred 
-            && this.settings.morgana 
+    } else if (this.playerNames.length < 7
+            && this.settings.mordred
+            && this.settings.morgana
             && this.settings.oberon) {
         this.disabledReason = 'tooFew'
     } else {

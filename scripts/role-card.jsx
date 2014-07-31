@@ -31,16 +31,17 @@ var RoleCard = React.createClass({
         var spyNoun = theSpies.length == 1 ? "spy" : "spies"
         var spyVerb = theSpies.length == 1 ? "is" : "are"
         var other = role.spy? "other" : ""
+        var oberonText = role.hasOberon? <span><br /><span className='spy'>Oberon</span> is hidden from you.</span> : ''
         var spiesBlock = theSpies.length > 0
-                ? <p>The {other} {spyNoun} {spyVerb}: <span className='spy'>{spiesText}</span></p>
+                ? <p>The {other} {spyNoun} {spyVerb} <span className='spy'>{spiesText}</span>. {oberonText}</p>
                 : <p>You do not see any {other} spies.</p>
         var extraInfo = <div></div>
         var description = <p></p>
 
         var name = <span className='resistance'>resistance</span>
 
-        if (role.spy) {
-            name = <span className='spy'>a spy</span>;
+        if (role.spy && !role.oberon) {
+            name = <span>a <span className='spy'>spy</span></span>;
             extraInfo = spiesBlock;
         }
         if (role.percival) {
@@ -58,7 +59,7 @@ var RoleCard = React.createClass({
             extraInfo = spiesBlock;
             description = <p>If the spies discover your identity, resistance loses!</p>
         }
-        if (role.mordred) { 
+        if (role.mordred) {
             name = <span className='spy'>Mordred</span>
             description = <p>You are invisible to <span className='resistance'>Merlin</span>.</p>
         }
@@ -68,7 +69,7 @@ var RoleCard = React.createClass({
         }
         if (role.oberon) {
             name = <span className='spy'>Oberon</span>
-            description = <p>The other spies cannot see you.</p>
+            description = <p>The other spies cannot see you, and you cannot see them.</p>
         }
         contents = <div>
             <p>You are {name}!</p>
