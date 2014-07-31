@@ -25,3 +25,7 @@ less-long: less
 
 watch-less:
 	$(NODEMON) --watch styles/*.less --exec "make less-long"
+
+deploy-here:
+	git fetch origin master
+	git checkout -f origin/master
