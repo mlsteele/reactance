@@ -12,7 +12,7 @@ var NewName = React.createClass({
     },
 
     render: function() {
-        return <form className='new-name' onSubmit={this.onSubmit}>
+        return <form onSubmit={this.onSubmit}>
             <input type="name"
                 className="name"
                 value={this.state.text}
