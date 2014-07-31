@@ -162,6 +162,8 @@ h2 {
     @rounditude: 5px;
     @itemheight: 45px;
     list-style-type: none;
+    max-height:336px;
+    overflow-y:scroll;
 
     li {
         position: relative;
@@ -245,6 +247,24 @@ h2 {
             cursor: pointer;
         }
     }
+}
+.new-name {
+    margin-top: 20px;
+}
+.new-name input.name {
+    height: 30px;
+    margin: 8px 15px;
+    border: none;
+    outline: none;
+    background-color: lighten(@lessAccent, 1%);
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.new-name button {
+    float: right;
+    height: 45px;
+    margin: 0;
+    padding: 0 20px;
 }
 
 .labeled-number {
