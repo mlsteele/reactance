@@ -29,3 +29,4 @@ watch-less:
 deploy-here:
 	git fetch origin master
 	git checkout -f origin/master
+	make all
