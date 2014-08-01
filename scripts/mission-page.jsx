@@ -17,17 +17,7 @@ var MissionPage = React.createClass({
     },
 
     render: function() {
-        var missionNumbersGivenPlayers = {
-            5: ["2", "3", "2", "3", "3"],
-            6: ["2", "3", "4", "3", "4"],
-            7: ["2", "3", "3", "4*", "4"],
-            8: ["3", "4", "4", "5*", "5"],
-            9: ["3", "4", "4", "5*", "5"],
-            10: ["3", "4", "4", "5*", "5"],
-        }
-        var missionNumbers = <div className="mission-numbers">
-            {missionNumbersGivenPlayers[this.props.numPlayers].join(" ")}
-        </div>
+        var missionNumbers = this.renderMissionNumbers();
         if (this.props.revealed) {
             var passLabel = this.props.passes === 1 ? "Pass" : "Passes"
             var failLabel = this.props.fails === 1 ? "Fail" : "Fails"
@@ -76,6 +66,25 @@ var MissionPage = React.createClass({
                     Reset</button>
                 <button onClick={this.props.onReveal}>Reveal</button>
             </div>
+        }
+    },
+
+    renderMissionNumbers: function() {
+        var missionNumbersGivenPlayers = {
+            5: ["2", "3", "2", "3", "3"],
+            6: ["2", "3", "4", "3", "4"],
+            7: ["2", "3", "3", "4*", "4"],
+            8: ["3", "4", "4", "5*", "5"],
+            9: ["3", "4", "4", "5*", "5"],
+            10: ["3", "4", "4", "5*", "5"],
+        }
+        var nums = missionNumbersGivenPlayers[this.props.numPlayers]
+        if (nums !== undefined) {
+            return <div className="mission-numbers">
+                {nums.join(" ")}
+            </div>
+        } else {
+            return null
         }
     },
 
