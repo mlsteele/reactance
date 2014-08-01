@@ -152,6 +152,12 @@ h2 {
 
 .settings {
     margin-top: 20px;
+
+    ul {
+        margin-top: 10px;
+        height: 135px;
+        .column-count(2);
+    }
 }
 
 .settings .toggle {
@@ -159,7 +165,7 @@ h2 {
     color: fade(black, 30%);
     text-transform: uppercase;
     margin:6px 6px;
-    padding: 8px 12px;
+    padding: 5px 12px;
     // background-color: rgba(0,0,0,0.25);
     background-color: none;
 
@@ -335,4 +341,14 @@ h2 {
     font-size: 1.5rem;
     word-spacing: 1.5rem;
     margin-top: -10px;
+}
+
+.column-count(@count) {
+    -webkit-column-count: @count;
+    -moz-column-count: @count;
+}
+
+.column-gap(@gap) {
+    -webkit-column-gap: @gap;
+    -moz-column-gap: @gap;
 }

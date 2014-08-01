@@ -11,7 +11,7 @@ var Settings = React.createClass({
     },
 
     render: function() {
-        var settingOrder = ['merlin', 'morgana', 'mordered', 'percival', 'oberon']
+        var settingOrder = ['morgana', 'mordred', 'oberon', 'merlin', 'percival']
         var items = settingOrder.map(function(setting) {
             return <li><Toggle
                 key={setting}
