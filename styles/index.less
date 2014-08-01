@@ -30,6 +30,8 @@
 @tabWidth: 100% / 3;
 @tabGreed: 0%;
 
+@maxWidth: 600px;
+
 .darken-gradient (@startColor: #eee) {
     // @endColor: darken(@startColor, lightness(@startColor) / 10);
     @endColor: darken(@startColor, 3%);
@@ -61,13 +63,18 @@ body {
     position: relative;
     background-color: @pageBase;
     min-height: 100%;
-    max-width: 600px;
+    max-width: @maxWidth;
     margin: 0 auto;
     box-shadow: 0 0 5px fade(black, 30%);
 }
 
 nav {
+    background-color: white;
     box-shadow: 0 3px 3px -3px fade(black, 30%);
+    position: fixed;
+    width: 100%;
+    max-width: @maxWidth;
+    z-index: 100;
 }
 
 nav a {
@@ -112,11 +119,13 @@ button.secret-focus:focus {
 h2 {
     font-weight: 300;
 }
+
 .tab-contents {
     padding: 15px;
     @media @desktop {
         padding: 30px;
     }
+    padding-top: 70px;
 }
 
 .role-card {
