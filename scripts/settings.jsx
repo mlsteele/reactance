@@ -13,15 +13,15 @@ var Settings = React.createClass({
     render: function() {
         var settingOrder = ['merlin', 'morgana', 'mordered', 'percival', 'oberon']
         var items = settingOrder.map(function(setting) {
-            return <Toggle
+            return <li><Toggle
                 key={setting}
                 setting={setting}
                 value={this.props.settings[setting]}
-                onChange={this.onChangeSetting} />
+                onChange={this.onChangeSetting} /></li>
         }.bind(this))
         return <div className="settings">
             <h2>Special Roles</h2>
-            {items}
+            <ul>{items}</ul>
         </div>
     },
 

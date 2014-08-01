@@ -59,6 +59,10 @@ body {
     font-size: 1rem;
 }
 
+ul {
+    list-style-type: none;
+}
+
 #app {
     position: relative;
     background-color: @pageBase;
@@ -154,27 +158,37 @@ h2 {
     background: none;
     color: rgba(0,0,0,.57);
     text-transform: uppercase;
-    margin:12px 6px;
+    margin:6px 6px;
     padding: 8px 12px;
+    background-color: rgba(0,0,0,0.25);
 
-    &:hover {
-        background-color: rgba(0,0,0,0.25);
+    &:before {
+        @sizzle: 10px;
+        margin-right: 10px;
+        margin-top: 6px;
+        display: inline-block;
+        content: "";
+        float: left;
+        width: @sizzle;
+        height: @sizzle;
+        border-radius: @sizzle;
+        background-color: black;
     }
 }
 
 .settings .toggle.active {
-    color: #5ccee5;
+    color: white;
+    background-color: @aoi;
 
-    &:hover {
-        color: white;
-        background-color: @aoi;
+    &:before {
+        background-color: white;
+        box-shadow: 0 0 3px white;
     }
 }
 
 .player-list {
     @rounditude: 5px;
     @itemheight: 45px;
-    list-style-type: none;
 
     li {
         position: relative;
