@@ -80,3 +80,7 @@ missionstate.onChange(renderApp)
 // setTimeout(function() {
     // location.reload()
 // }, 2000)
+
+var role_descriptions = require('./role-descriptions')
+window.RD = role_descriptions
+console.log(role_descriptions.merlin)

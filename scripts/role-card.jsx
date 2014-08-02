@@ -26,7 +26,6 @@ var RoleCard = React.createClass({
         var contents = null
 
         var theSpies = role.spies || role.otherSpies || [];
-        console.log(theSpies);
         var spiesText = theSpies.join(', ')
         var spyNoun = theSpies.length == 1 ? "spy" : "spies"
         var spyVerb = theSpies.length == 1 ? "is" : "are"
