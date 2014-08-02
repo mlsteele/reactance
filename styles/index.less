@@ -127,11 +127,13 @@ h2 {
 }
 
 .tab-contents {
-    padding: 15px;
+    @padding-top: 70px;
+    @padding-other: 15px;
+    padding: @padding-top @padding-other @padding-other @padding-other;
     @media @desktop {
-        padding: 30px;
+        @padding-other: 30px;
+        padding: @padding-top @padding-other @padding-other @padding-other;
     }
-    padding-top: 70px;
 }
 
 .role-card {
