@@ -8,7 +8,6 @@ Run `make` to build the javascript and css bundles.
 Then navigate to index.html in your browser.
 
 # Development
-You can run `make js` and `make less` to build the bundles.
-But you might find it more convenient to run
-`make watch` to continuously build javascript
-and `make watch-less` to continuously build css.
+Run `make` to build the js and less bundles.
+Run `make watch` to run the watchers to continuously
+build js and less for development.

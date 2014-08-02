@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+trap "kill 0" SIGINT
+
+for arg in "$@"; do
+    echo $arg
+    eval "$arg" &
+done
+
+wait

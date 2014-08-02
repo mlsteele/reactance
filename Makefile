@@ -13,7 +13,7 @@ clean:
 js:
 	$(BROWSERIFY) scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug
 
-watch:
+watch-js:
 	$(WATCHIFY)   scripts/index.js --transform reactify --transform es6ify --outfile scripts/bundle.js --debug -v
 
 less:
@@ -25,6 +25,9 @@ less-long: less
 
 watch-less:
 	$(NODEMON) --watch styles/*.less --exec "make less-long"
+
+watch:
+	./together "make watch-js" "make watch-less"
 
 deploy-here:
 	git fetch
