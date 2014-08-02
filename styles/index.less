@@ -27,8 +27,8 @@
 @accentDisabled: lighten(@aoi, 20%);
 @lessAccent: #eee;
 
-@tabBase: lighten(@unrealFoodPills, 30%);
-@tabActive: @unrealFoodPills;
+@tabBase: @unrealFoodPills;
+@tabActive: @white;
 @tabWidth: 100% / 3;
 @tabGreed: 0%;
 
@@ -75,31 +75,32 @@ ul {
 }
 
 nav {
-    background-color: white;
-    box-shadow: 0 3px 3px -3px fade(black, 30%);
     position: fixed;
     width: 100%;
     max-width: @maxWidth;
     z-index: 100;
+    font-family: 'Open Sans', Roboto, sans-serif;
+    box-shadow: 0 4px 5px -2px fade(black, 40%);
+    background-color: @tabBase;
 }
 
 nav a {
-    background-color: @white;
-    border-top: 5px solid @tabBase;
+    border-bottom: 5px solid lighten(@giantGoldfish, 10%);
 
     display: inline-block;
     width: @tabWidth - @tabGreed / 2;
-    padding: 15px 0;
+    padding: 7px 10px;
     text-align: center;
-    font-size: 1rem;
-    color: @textColor;
-    transition: width .15s ease-in-out;
+    font-size: 1.25rem;
+    color: fade(@white, 85%);
+    font-weight: 400;
+    // text-shadow: 0px 1px 3px fade(black, 20%);
+    transition: border-color 0.1s ease-in-out;
 
     &.active {
-        background-color: fade(@tabActive, 10%);
-        border-top: 5px solid @tabActive;
+        border-bottom: 5px solid lighten(@giantGoldfish, 50%);
         width: @tabWidth + @tabGreed;
-        transition: background-color 0.1s ease-in-out;
+        color: @white;
     }
 }
 
@@ -378,7 +379,7 @@ h2 {
     color: #ccc;
     font-size: 1.5rem;
     word-spacing: 1.5rem;
-    margin-top: -10px;
+    // margin-top: -10px;
 }
 
 .column-count(@count) {
