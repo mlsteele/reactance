@@ -235,6 +235,18 @@ h2 {
     }
 }
 
+@namelet-colors: #c0392b, #27ae60, #3498db, #9b59b6, #f1c40f, #e67e22, #e74c3c;
+.generate-namelets(@colors, @i) when (@i > 0) {
+    .namelet-@{i} {
+        @color: extract(@colors, @i);
+        @color2: lighten(desaturate(@color, 10%), 30%);
+        .darken-gradient(@color2);
+    }
+
+    .generate-namelets(@colors, @i - 1);
+}
+.generate-namelets(@namelet-colors, length(@namelet-colors));
+
 .player-list {
     @rounditude: 5px;
     @itemheight: 45px;
@@ -271,8 +283,7 @@ h2 {
     li .namelet {
         float: left;
         // .darken-gradient(@cleanPondwater);
-        color: white;
-        text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+        // text-shadow: 0px 1px 1px white;
         @diameter: 35px;
         width: @diameter;
         height: @diameter;
@@ -281,7 +292,7 @@ h2 {
         font-weight: 300;
         text-align: center;
         padding-top: 4px;
-        margin-top: 5px;
+        margin-top: 4px;
         margin-left: 10px;
         box-shadow: inset 0 1px 3px 0px fade(black, 30%);
     }

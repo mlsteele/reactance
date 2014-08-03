@@ -1,8 +1,9 @@
 /** @jsx React.DOM */
 
 var NewName = require('./new-name.jsx')
-var colorForPlayer = require('./color.js')
+var colorStyleForPlayer = require('./color.js')
 var PT = React.PropTypes
+var cx = React.addons.classSet
 
 var PlayerList = React.createClass({
     propTypes: {
@@ -51,10 +52,13 @@ var PlayerList = React.createClass({
                 onClick={clickHandler}>
                 </button>
         }
-        var style = {'background-color': colorForPlayer(name)}
 
+        var styles = {'namelet': true}
+        styles[colorStyleForPlayer(name)] = true
         return <li key={name}>
-            <div className="namelet" style={style}>{name[0]}</div>
+            <div className="namelet" className={cx(styles)}>
+                {name[0]}
+            </div>
             <span className="name">{name}</span>
             {showButton}
             {deleteButton}

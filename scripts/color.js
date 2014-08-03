@@ -1,4 +1,11 @@
-module.exports = getColorFromString;
+module.exports = colorStyleForPlayer;
+
+function colorStyleForPlayer(player) {
+    // Keep this in sync with index.less
+    var numColors = 7
+    var colorNum = Math.abs(hashString(player)) % (numColors) + 1
+    return `namelet-${colorNum}`
+}
 
 function getColorFromString(player) {
     // colors from http://flatuicolors.com/
