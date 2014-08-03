@@ -240,7 +240,7 @@ h2 {
     .namelet-@{i} {
         // @color: extract(@colors, @i);
         @color: hsv(@i * 255 / @namelet-count, 1, 1);
-        @color2: lighten(desaturate(@color, 50%), 30%);
+        @color2: lighten(desaturate(@color, 20%), 20%);
         .darken-gradient(@color2);
     }
     .generate-namelets(@i - 1);
