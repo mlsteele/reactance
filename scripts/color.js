@@ -2,8 +2,10 @@ module.exports = colorStyleForPlayer;
 
 function colorStyleForPlayer(player) {
     // Keep this in sync with index.less
-    var numColors = 7
-    var colorNum = Math.abs(hashString(player)) % (numColors) + 1
+    var numColors = 10
+    var offset = 8
+    var mult = 3
+    var colorNum = Math.abs(hashString(player) * mult + offset) % (numColors) + 1
     return `namelet-${colorNum}`
 }
 
