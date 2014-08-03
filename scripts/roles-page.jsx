@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 
-var PlayerList = require('./player-list.jsx')
+var RolePlayerEntry = require('./role-player-entry.jsx')
 var RoleCard = require('./role-card.jsx')
 var PT = React.PropTypes
 
@@ -30,19 +30,38 @@ var RolesPage = React.createClass({
             // return <p>Invalid setup. Go back to setup and change something.</p>
         // }
 
-        if (this.props.selectedPlayer) {
-            return <RoleCard
-                confirmed={this.props.selectionConfirmed}
+        var elements = this.props.playerNames.map(function(name) {
+            return this.renderEntry(
+                name,
+                this.props.selectedPlayer === name,
+                this.props.selectionConfirmed)
+        }.bind(this))
+
+        return <ul className="player-list">
+            {elements}
+        </ul>
+
+    },
+
+    renderEntry: function(name, selected, confirmed) {
+
+        var content = null;
+        if (selected && confirmed) {
+            content = <RoleCard
                 playerName={this.props.selectedPlayer}
-                role={this.props.selectedRole}
-                onClickConfirm={this.props.onClickConfirm}
-                onClickCancel={this.props.onClickCancel}
-                onClickBack={this.props.onClickCancel} />
-        } else {
-            return <PlayerList
-                playerNames={this.props.playerNames}
-                onClickShow={this.props.onClickShow} />
+                role={this.props.selectedRole} />
         }
+
+        return <RolePlayerEntry
+            name={name}
+            content={content}
+            selected={selected}
+            confirmed={selected && confirmed}
+
+            onClickShow={this.props.onClickShow}
+            onClickConfirm={this.props.onClickConfirm}
+            onClickBack={this.props.onClickCancel} />
+
     },
 });
 

@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 
-var PlayerList = require('./player-list.jsx')
+var SetupPlayerList = require('./setup-player-list.jsx')
 var Settings = require('./settings.jsx')
 var PT = React.PropTypes
 
@@ -17,7 +17,7 @@ var SetupPage = React.createClass({
 
     render: function() {
         return <div>
-            <PlayerList
+            <SetupPlayerList
                 playerNames={this.props.playerNames}
                 onAddName={this.props.onAddName}
                 onDeleteName={this.props.onDeleteName} />
