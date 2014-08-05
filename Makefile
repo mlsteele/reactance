@@ -24,10 +24,13 @@ less-long: less
 	sleep 999999999
 
 watch-less:
-	$(NODEMON) --watch styles/*.less --exec "make less-long"
+	$(NODEMON) --watch styles/ --ext less --exec "make less-long"
 
 watch:
 	./together "make watch-js" "make watch-less"
+
+watch-serve:
+	./together "make watch-js" "make watch-less" "http-server"
 
 deploy-here:
 	git fetch
