@@ -1,0 +1,80 @@
+.settings {
+    margin-top: 20px;
+
+    @media @role-toggles-scrunch {
+        ul {
+            margin-top: 10px;
+            height: 135px;
+            .column-count(2);
+        }
+    }
+
+    @media @role-toggles-wide {
+        li {
+            display: inline-block;
+        }
+    }
+}
+
+.settings .toggle {
+    @media @role-toggles-scrunch {
+        background: none;
+        color: fade(black, 30%);
+        text-transform: uppercase;
+        margin:6px 6px;
+        padding: 5px 12px;
+        // background-color: rgba(0,0,0,0.25);
+        background-color: none;
+
+        &:before {
+            @indicator-size: 11px;
+            margin-right: 10px;
+            margin-top: 4px;
+            display: inline-block;
+            content: "";
+            float: left;
+            width: @indicator-size;
+            height: @indicator-size;
+            border-radius: 2px;
+            border: 1px solid fade(black, 30%);
+            background-color: white;
+            box-shadow: inset 0 0 2px fade(black, 30%);
+        }
+    }
+
+    @media @role-toggles-wide {
+        background: none;
+        color: rgba(0,0,0,.57);
+        text-transform: uppercase;
+        margin:12px 6px;
+        padding: 8px 12px;
+
+        &:hover {
+            background-color: rgba(0,0,0,0.25);
+        }
+    }
+}
+
+.settings .toggle.active {
+    @media @role-toggles-scrunch {
+        color: @aoi;
+        // background-color: @aoi;
+
+        &:before {
+            // background-color: fade(black, 50%);
+            background-color: @aoi;
+            border: 1px solid @aoi;
+            box-shadow: inset 0 0 3px fade(white, 80%);
+        }
+    }
+
+    @media @role-toggles-wide {
+        color: #5ccee5;
+
+        &:hover {
+            color: white;
+            background-color: @aoi;
+        }
+    }
+}
+

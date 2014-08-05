@@ -1,69 +1,10 @@
-@desktop:   ~"only screen and (min-width: 960px)";
-@tablet:    ~"only screen and (min-width: 720px) and (max-width: 959px)";
-@role-toggles-wide:   ~"only screen and (min-width: 599px)";
-@role-toggles-scrunch:   ~"only screen and (max-width: 600px)";
-
-@baseGreen: #484;
-@lightGreen: lighten(@baseGreen, 10%);
-@lighterGreen: lighten(@lightGreen, 10%);
-@darkGreen: darken(@baseGreen, 10%);
-
-@baseRed: #c33;
-
-@white: #fff;
-@gray: #ccc;
-@lightGray: lighten(@gray, 10%);
-
-@beachStorm: #E0E4CC;       // off white
-@cleanPondwater: #A7DBD8;   // light blue
-@aoi: #69D2E7;              // brighter light blue
-@giantGoldfish: #F38630;    // orange
-@unrealFoodPills: #FA6900;  // brighter orange
-
-@textColor: #333;
-@pageBase: @white;
-@background: @white;
-@accentColor: @aoi;
-@accentDisabled: lighten(@aoi, 20%);
-@lessAccent: #eee;
-
-@tabBase: @unrealFoodPills;
-@tabActive: @white;
-@tabWidth: 100% / 3;
-@tabGreed: 0%;
-
-@maxWidth: 600px;
-
-.darken-gradient (@startColor: #eee) {
-    // @endColor: darken(@startColor, lightness(@startColor) / 10);
-    @endColor: darken(@startColor, 3%);
-    background-color: @startColor;
-    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
-    background: -webkit-linear-gradient(top, @startColor, @endColor);
-    background: -moz-linear-gradient(top, @startColor, @endColor);
-    background: -ms-linear-gradient(top, @startColor, @endColor);
-    background: -o-linear-gradient(top, @startColor, @endColor);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    font-size: 100%;
-}
-
-body {
-    background-color: @background;
-    font-family: Roboto, Arial;
-    font-size: 1rem;
-}
-
-ul {
-    list-style-type: none;
-}
+@import "reset.less";
+@import "variables.less";
+@import "util.less";
+@import "nav.less";
+@import "setup-page.less";
+@import "roles-page.less";
+@import "missions-page.less";
 
 #app {
     position: relative;
@@ -72,36 +13,6 @@ ul {
     max-width: @maxWidth;
     margin: 0 auto;
     box-shadow: 0 0 5px fade(black, 30%);
-}
-
-nav {
-    position: fixed;
-    width: 100%;
-    max-width: @maxWidth;
-    z-index: 100;
-    font-family: 'Open Sans', Roboto, sans-serif;
-    box-shadow: 0 4px 5px -2px fade(black, 40%);
-    background-color: @tabBase;
-}
-
-nav a {
-    border-bottom: 5px solid lighten(@giantGoldfish, 10%);
-    cursor: pointer;
-    display: inline-block;
-    width: @tabWidth - @tabGreed / 2;
-    padding: 7px 10px;
-    text-align: center;
-    font-size: 1.25rem;
-    color: fade(@white, 85%);
-    font-weight: 400;
-    // text-shadow: 0px 1px 3px fade(black, 20%);
-    transition: border-color 0.1s ease-in-out;
-
-    &.active {
-        border-bottom: 5px solid lighten(@giantGoldfish, 50%);
-        width: @tabWidth + @tabGreed;
-        color: @white;
-    }
 }
 
 button {
@@ -128,114 +39,6 @@ h2 {
     font-weight: 300;
 }
 
-.tab-contents {
-    @padding-top: 70px;
-    @padding-other: 15px;
-    padding: @padding-top @padding-other @padding-other @padding-other;
-    @media @desktop {
-        @padding-other: 30px;
-        padding: @padding-top @padding-other @padding-other @padding-other;
-    }
-}
-
-.role-card {
-
-    .spy {color: red;}
-    .resistance {color: green;}
-
-    .cancel:before {
-        content: "\f05e";
-        font-family: FontAwesome;
-        margin-right: 7px;
-    }
-
-    .confirm:before {
-        content: "\f00c";
-        font-family: FontAwesome;
-        margin-right: 7px;
-    }
-}
-
-.settings {
-    margin-top: 20px;
-
-    @media @role-toggles-scrunch {
-        ul {
-            margin-top: 10px;
-            height: 135px;
-            .column-count(2);
-        }
-    }
-
-    @media @role-toggles-wide {
-        li {
-            display: inline-block;
-        }
-    }
-}
-
-.settings .toggle {
-    @media @role-toggles-scrunch {
-        background: none;
-        color: fade(black, 30%);
-        text-transform: uppercase;
-        margin:6px 6px;
-        padding: 5px 12px;
-        // background-color: rgba(0,0,0,0.25);
-        background-color: none;
-
-        &:before {
-            @indicator-size: 11px;
-            margin-right: 10px;
-            margin-top: 4px;
-            display: inline-block;
-            content: "";
-            float: left;
-            width: @indicator-size;
-            height: @indicator-size;
-            border-radius: 2px;
-            border: 1px solid fade(black, 30%);
-            background-color: white;
-            box-shadow: inset 0 0 2px fade(black, 30%);
-        }
-    }
-
-    @media @role-toggles-wide {
-        background: none;
-        color: rgba(0,0,0,.57);
-        text-transform: uppercase;
-        margin:12px 6px;
-        padding: 8px 12px;
-
-        &:hover {
-            background-color: rgba(0,0,0,0.25);
-        }
-    }
-}
-
-.settings .toggle.active {
-    @media @role-toggles-scrunch {
-        color: @aoi;
-        // background-color: @aoi;
-
-        &:before {
-            // background-color: fade(black, 50%);
-            background-color: @aoi;
-            border: 1px solid @aoi;
-            box-shadow: inset 0 0 3px fade(white, 80%);
-        }
-    }
-
-    @media @role-toggles-wide {
-        color: #5ccee5;
-
-        &:hover {
-            color: white;
-            background-color: @aoi;
-        }
-    }
-}
-
 @namelet-count: 10;
 .generate-namelets(@i) when (@i > 0) {
     .namelet-@{i} {
@@ -249,7 +52,6 @@ h2 {
 .generate-namelets(@namelet-count);
 
 .player-chip {
-
     .namelet {
         float: left;
         // .darken-gradient(@cleanPondwater);
@@ -309,8 +111,6 @@ h2 {
         float: left;
     }
 
-
-
     li input.name {
         height: 30px;
         margin: 8px 15px;
@@ -346,73 +146,4 @@ h2 {
         clear:both;
         padding: 10px 60px;
     }
-}
-
-.labeled-number {
-    margin: 0 auto;
-    font-size: 5rem;
-    text-align: center;
-
-    figcaption {
-        font-size: 1.5rem;
-    }
-}
-
-.mission-page.revealed .vote-holder {
-    width: 280px;
-    margin: 0 auto;
-}
-
-.mission-page.revealed .labeled-number {
-    width: 80px;
-    float: left;
-    margin: 0 30px;
-}
-
-.mission-page button {
-    width: 100%;
-
-    &.fail {
-        background-color: @baseRed;
-        .darken-gradient(@baseRed);
-        color: black;
-        border-color: darken(@baseRed, 20%);
-    }
-
-    &.fail:before {
-        content: "\f1e2";
-        font-family: FontAwesome;
-        margin-right: 7px;
-    }
-
-    &.reset {
-        width: 100px;
-        position: absolute;
-        left: 10px;
-        bottom: 10px;
-    }
-
-    &.reset:before {
-        content: "\f01e";
-        font-family: FontAwesome;
-        margin-right: 7px;
-    }
-}
-
-.mission-numbers {
-    text-align: center;
-    color: #ccc;
-    font-size: 1.5rem;
-    word-spacing: 1.5rem;
-    // margin-top: -10px;
-}
-
-.column-count(@count) {
-    -webkit-column-count: @count;
-    -moz-column-count: @count;
-}
-
-.column-gap(@gap) {
-    -webkit-column-gap: @gap;
-    -moz-column-gap: @gap;
 }

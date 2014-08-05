@@ -1,0 +1,20 @@
+.darken-gradient (@startColor: #eee) {
+    // @endColor: darken(@startColor, lightness(@startColor) / 10);
+    @endColor: darken(@startColor, 3%);
+    background-color: @startColor;
+    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background: -webkit-linear-gradient(top, @startColor, @endColor);
+    background: -moz-linear-gradient(top, @startColor, @endColor);
+    background: -ms-linear-gradient(top, @startColor, @endColor);
+    background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.column-count(@count) {
+    -webkit-column-count: @count;
+    -moz-column-count: @count;
+}
+
+.column-gap(@gap) {
+    -webkit-column-gap: @gap;
+    -moz-column-gap: @gap;
+}

@@ -1,0 +1,39 @@
+nav {
+    position: fixed;
+    width: 100%;
+    max-width: @maxWidth;
+    z-index: 100;
+    font-family: 'Open Sans', Roboto, sans-serif;
+    box-shadow: 0 4px 5px -2px fade(black, 40%);
+    background-color: @tabBase;
+}
+
+nav a {
+    border-bottom: 5px solid lighten(@giantGoldfish, 10%);
+    cursor: pointer;
+    display: inline-block;
+    width: @tabWidth - @tabGreed / 2;
+    padding: 7px 10px;
+    text-align: center;
+    font-size: 1.25rem;
+    color: fade(@white, 85%);
+    font-weight: 400;
+    // text-shadow: 0px 1px 3px fade(black, 20%);
+    transition: border-color 0.1s ease-in-out;
+
+    &.active {
+        border-bottom: 5px solid lighten(@giantGoldfish, 50%);
+        width: @tabWidth + @tabGreed;
+        color: @white;
+    }
+}
+
+.tab-contents {
+    @padding-top: 70px;
+    @padding-other: 15px;
+    padding: @padding-top @padding-other @padding-other @padding-other;
+    @media @desktop {
+        @padding-other: 30px;
+        padding: @padding-top @padding-other @padding-other @padding-other;
+    }
+}

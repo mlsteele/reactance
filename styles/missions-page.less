@@ -1,0 +1,58 @@
+.labeled-number {
+    margin: 0 auto;
+    font-size: 5rem;
+    text-align: center;
+
+    figcaption {
+        font-size: 1.5rem;
+    }
+}
+
+.mission-page.revealed .vote-holder {
+    width: 280px;
+    margin: 0 auto;
+}
+
+.mission-page.revealed .labeled-number {
+    width: 80px;
+    float: left;
+    margin: 0 30px;
+}
+
+.mission-page button {
+    width: 100%;
+
+    &.fail {
+        background-color: @baseRed;
+        .darken-gradient(@baseRed);
+        color: black;
+        border-color: darken(@baseRed, 20%);
+    }
+
+    &.fail:before {
+        content: "\f1e2";
+        font-family: FontAwesome;
+        margin-right: 7px;
+    }
+
+    &.reset {
+        width: 100px;
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+    }
+
+    &.reset:before {
+        content: "\f01e";
+        font-family: FontAwesome;
+        margin-right: 7px;
+    }
+}
+
+.mission-numbers {
+    text-align: center;
+    color: #ccc;
+    font-size: 1.5rem;
+    word-spacing: 1.5rem;
+    // margin-top: -10px;
+}
