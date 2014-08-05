@@ -36,7 +36,7 @@ var RolePlayerEntry = React.createClass({
             console.log("click Back");
                 this.props.onClickBack()
             }.bind(this);
-            text = "Back";
+            text = "Hide";
         }
         else if (this.props.selected) {
             clickHandler = function() {
