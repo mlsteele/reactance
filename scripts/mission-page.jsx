@@ -10,6 +10,7 @@ var MissionPage = React.createClass({
         numPlayers: PT.number.isRequired,
         passes: PT.number.isRequired,
         fails:  PT.number.isRequired,
+        history: PT.array.isRequired,
         revealed:  PT.bool.isRequired,
         onVote:  PT.func.isRequired,
         onReset:  PT.func.isRequired,
@@ -21,7 +22,7 @@ var MissionPage = React.createClass({
         if (this.props.revealed) {
             var passLabel = this.props.passes === 1 ? "Pass" : "Passes"
             var failLabel = this.props.fails === 1 ? "Fail" : "Fails"
-            
+
             return <div className="mission-page revealed">
                 {missionNumbers}
                 <div className="vote-holder">
@@ -67,9 +68,22 @@ var MissionPage = React.createClass({
             10: ["3", "4", "4", "5*", "5"],
         }
         var nums = missionNumbersGivenPlayers[this.props.numPlayers]
+        var history = this.props.history
+        var numElements = nums.map(function(num){
+            return <span className="num">{num}</span>
+        })
+        for (var i=0; i<history.length; i++) {
+            var passed = history[i]==0 || (history[i]==1 && nums[i].indexOf("*")!=-1)
+            numElements[i] = <span className={cx({
+                'pass': passed,
+                'fail': !passed,
+                'num': true
+            })}>{nums[i]}</span>
+        }
+
         if (nums !== undefined) {
             return <div className="mission-numbers">
-                {nums.join(" ")}
+                {numElements}
             </div>
         } else {
             return null

@@ -7,6 +7,7 @@ function MissionState(dispatcher) {
 
     this.passes = 0
     this.fails = 0
+    this.history = []
 
     dispatcher.onAction(function(payload) {
         var actions = MissionState.actions
@@ -17,7 +18,7 @@ function MissionState(dispatcher) {
     }.bind(this))
 }
 
-var PERSIST_KEYS = ['passes', 'fails']
+var PERSIST_KEYS = ['passes', 'fails', 'history']
 
 MissionState.prototype.save = function() {
     var persist = {}
@@ -32,6 +33,17 @@ MissionState.prototype.load = function() {
     }
 }
 
+MissionState.prototype.resetMission = function() {
+    this.passes = 0
+    this.fails = 0
+    this._emitChange()
+}
+
+MissionState.prototype.resetMissionHistory = function() {
+    this.history = []
+    this.resetMission()
+}
+
 MissionState.actions = {}
 
 MissionState.actions.missionVote = function({pass}) {
@@ -44,7 +56,25 @@ MissionState.actions.missionVote = function({pass}) {
 }
 
 MissionState.actions.missionReset = function() {
-    this.passes = 0
-    this.fails = 0
-    this._emitChange()
+    this.resetMission()
+}
+
+MissionState.actions.addPlayer = function({name}) {
+    this.resetMissionHistory()
+}
+
+MissionState.actions.deletePlayer = function({name}) {
+    this.resetMissionHistory()
+}
+
+MissionState.actions.changeSettings = function({settings}) {
+    this.resetMissionHistory()
+}
+
+MissionState.actions.newRoles = function() {
+    this.resetMissionHistory()
+}
+
+MissionState.actions.missionReveal = function() {
+    this.history.push(this.fails)
 }

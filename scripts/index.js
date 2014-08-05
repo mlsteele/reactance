@@ -31,7 +31,7 @@ var renderApp = function() {
     var setupPage = SetupPage({
         playerNames: gamestate.playerNames, settings: gamestate.settings,
         onAddName: onAddName,
-        onDeleteName: dispatcher.bake('deletePlayer', 'name'), 
+        onDeleteName: dispatcher.bake('deletePlayer', 'name'),
         onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
         onNewRoles: dispatcher.bake('newRoles'),
     })
@@ -52,6 +52,7 @@ var renderApp = function() {
         numPlayers: gamestate.playerNames.length,
         passes: missionstate.passes,
         fails: missionstate.fails,
+        history: missionstate.history,
         revealed: uistate.missionRevealed,
         onVote: dispatcher.bake('missionVote', 'pass'),
         onReveal: dispatcher.bake('missionReveal'),
