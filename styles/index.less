@@ -17,7 +17,7 @@
 
 button {
     font-size: 1rem;
-    background-color: @accentColor;
+    // background-color: @accentColor;
     .darken-gradient(@accentColor);
     border: none;
     color: @textColor;
@@ -28,12 +28,20 @@ button {
     margin: 5px;
     outline: none;
     text-shadow: 0 1px 1px fade(white, 30%);
-    cursor:pointer;
+
+    @media @desktop {
+        cursor: pointer;
+    }
+
+    &.secret-focus:focus {
+        outline: none;
+    }
+
+    &:active {
+        .darken-gradient(darken(@accentColor, 10%));
+    }
 }
 
-button.secret-focus:focus {
-    outline: none;
-}
 
 h2 {
     font-weight: 300;

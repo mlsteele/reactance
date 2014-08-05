@@ -10,7 +10,6 @@ nav {
 
 nav a {
     border-bottom: 5px solid lighten(@giantGoldfish, 10%);
-    cursor: pointer;
     display: inline-block;
     width: @tabWidth - @tabGreed / 2;
     padding: 7px 10px;
@@ -20,6 +19,10 @@ nav a {
     font-weight: 400;
     // text-shadow: 0px 1px 3px fade(black, 20%);
     transition: border-color 0.1s ease-in-out;
+
+    @media @desktop {
+        cursor: pointer;
+    }
 
     &.active {
         border-bottom: 5px solid lighten(@giantGoldfish, 50%);

@@ -23,10 +23,13 @@
     width: 100%;
 
     &.fail {
-        background-color: @baseRed;
         .darken-gradient(@baseRed);
         color: black;
         border-color: darken(@baseRed, 20%);
+
+        &:active {
+            .darken-gradient(darken(@baseRed, 10%));
+        }
     }
 
     &.fail:before {
