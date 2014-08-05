@@ -2,6 +2,8 @@
 
 var PlayerChip = require('./player-chip.jsx')
 var PT = React.PropTypes
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 
 var RolePlayerEntry = React.createClass({
     propTypes: {
@@ -19,7 +21,9 @@ var RolePlayerEntry = React.createClass({
         return <li key={this.props.name}>
             <PlayerChip name={this.props.name} />
             {this.renderButton()}
-            {this.props.content}
+            <ReactCSSTransitionGroup transitionName="role-details">
+                {this.props.content}
+            </ReactCSSTransitionGroup>
         </li>
     },
 

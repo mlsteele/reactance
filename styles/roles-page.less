@@ -1,4 +1,12 @@
+@max-card-height: 70px;
+
 .role-card {
+
+    clear:both;
+    margin: 10px 60px;
+    max-height: @max-card-height;
+    overflow:hidden;
+
     .spy {color: red;}
     .resistance {color: green;}
 
@@ -13,4 +21,19 @@
         font-family: FontAwesome;
         margin-right: 7px;
     }
+}
+
+role-details-enter {
+    max-height: 0px;
+    transition: all 0.5s ease-out;
+}
+.role-details-enter.role-details-enter-active {
+    max-height: @max-card-height;
+}
+.role-details-leave {
+    max-height: @max-card-height;
+    transition: all 0.5s ease-out;
+}
+.role-details-leave.role-details-leave-active {
+    max-height:0px;
 }
