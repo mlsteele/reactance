@@ -17,7 +17,7 @@ var MissionPage = React.createClass({
     },
 
     render: function() {
-        var missionNumbers = this.renderMissionNumbers();
+        var missionNumbers = this.renderMissionNumbers()
         if (this.props.revealed) {
             var passLabel = this.props.passes === 1 ? "Pass" : "Passes"
             var failLabel = this.props.fails === 1 ? "Fail" : "Fails"
@@ -39,27 +39,15 @@ var MissionPage = React.createClass({
             </div>
         } else {
             var votes = this.props.passes + this.props.fails
+            Math.random()
+            var side = Math.random() > 0.5
             return <div className="mission-page">
                 {missionNumbers}
                 <LabeledNumber
                     name="Votes"
                     num={votes} />
-                <button
-                    className={cx({
-                        'pass': true,
-                        'secret-focus': true,
-                    })}
-                    data-pass="pass"
-                    onClick={this.onVote} >
-                    Pass</button>
-                <button
-                    className={cx({
-                        'fail': true,
-                        'secret-focus': true,
-                    })}
-                    data-pass="fail"
-                    onClick={this.onVote} >
-                    Fail</button>
+                {this.renderVoteButton(side)}
+                {this.renderVoteButton(!side)}
                 <button
                     className="reset"
                     onClick={this.props.onReset} >
@@ -88,8 +76,23 @@ var MissionPage = React.createClass({
         }
     },
 
+    renderVoteButton: function(pass) {
+        var label = pass ? "Pass" : "Fail"
+        return <div className="vote-container">
+            <button
+                className={cx({
+                    'pass': pass,
+                    'fail': !pass,
+                    'secret-focus': true,
+                })}
+                data-pass={pass}
+                onClick={this.onVote} >
+                {label}</button>
+        </div>
+    },
+
     onVote: function(e) {
-        var pass = e.target.dataset.pass === 'pass'
+        var pass = e.target.dataset.pass === "true"
         this.props.onVote(pass)
     },
 });

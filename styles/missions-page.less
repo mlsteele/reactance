@@ -19,8 +19,21 @@
     margin: 0 30px;
 }
 
+.mission-page .vote-container {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+    padding: 8px;
+}
+
 .mission-page button {
     width: 100%;
+    @toothGap: 10px;
+
+    &.pass, &.fail {
+        font-size: 1.5rem;
+        height: 100px;
+    }
 
     &.fail {
         .darken-gradient(@baseRed);
