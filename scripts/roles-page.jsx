@@ -26,10 +26,6 @@ var RolesPage = React.createClass({
             return <p>{message}</p>
         }
 
-        // if (!this.props.rolesExist) {
-            // return <p>Invalid setup. Go back to setup and change something.</p>
-        // }
-
         var elements = this.props.playerNames.map(function(name) {
             return this.renderEntry(
                 name,
@@ -53,6 +49,7 @@ var RolesPage = React.createClass({
         }
 
         return <RolePlayerEntry
+            key={name}
             name={name}
             content={content}
             selected={selected}
