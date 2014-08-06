@@ -1,5 +1,6 @@
 /** @jsx React.DOM */
 
+var Namelet = require('./namelet.jsx')
 var PT = React.PropTypes
 
 var NewName = React.createClass({
@@ -13,6 +14,7 @@ var NewName = React.createClass({
 
     render: function() {
         return <form className="new-player" onSubmit={this.onSubmit}>
+            <Namelet name={this.state.text} />
             <input type="name"
                 className="name"
                 value={this.state.text}
@@ -26,7 +28,9 @@ var NewName = React.createClass({
     },
 
     onChange: function(e) {
-        this.setState({text: e.target.value})
+        var name = e.target.value
+        name = name.charAt(0).toUpperCase() + name.slice(1),
+        this.setState({text: name})
     },
 
     onSubmit: function(e) {

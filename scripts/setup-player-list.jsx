@@ -26,7 +26,6 @@ var SetupPlayerList = React.createClass({
     },
 
     renderEntry: function(name) {
-
         var onClick = function() {
             this.props.onDeleteName(name);
         }.bind(this);

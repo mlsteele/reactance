@@ -20,17 +20,10 @@ uistate.load()
 gamestate.load()
 missionstate.load()
 
-var onAddName = function(name) {
-    dispatch({
-        action: 'addPlayer',
-        name: name.charAt(0).toUpperCase() + name.slice(1),
-    })
-}
-
 var renderApp = function() {
     var setupPage = SetupPage({
         playerNames: gamestate.playerNames, settings: gamestate.settings,
-        onAddName: onAddName,
+        onAddName: dispatcher.bake('addPlayer', 'name'),
         onDeleteName: dispatcher.bake('deletePlayer', 'name'),
         onChangeSettings: dispatcher.bake('changeSettings', 'settings'),
         onNewRoles: dispatcher.bake('newRoles'),

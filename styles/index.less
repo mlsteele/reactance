@@ -53,29 +53,32 @@ h2 {
         // @color: extract(@colors, @i);
         @color: hsv(@i * 255 / @namelet-count, 1, 1);
         @color2: lighten(desaturate(@color, 20%), 20%);
-        .darken-gradient(@color2);
+        // .darken-gradient(@color2);
+        background-color: @color2;
     }
     .generate-namelets(@i - 1);
 }
 .generate-namelets(@namelet-count);
 
-.player-chip {
-    .namelet {
-        float: left;
-        // .darken-gradient(@cleanPondwater);
-        @diameter: 35px;
-        width: @diameter;
-        height: @diameter;
-        border-radius: @diameter;
-        font-size: @diameter - 15px;
-        font-weight: 300;
-        text-align: center;
-        padding-top: 4px;
-        margin-top: 5px;
-        margin-left: 10px;
-        box-shadow: inset 0 1px 3px 0px fade(black, 30%);
-    }
+.namelet {
+    float: left;
+    // .darken-gradient(@cleanPondwater);
+    @diameter: 35px;
+    width: @diameter;
+    height: @diameter;
+    border-radius: @diameter;
+    font-size: @diameter - 15px;
+    font-weight: 300;
+    text-align: center;
+    padding-top: 4px;
+    margin-top: 5px;
+    margin-left: 10px;
+    box-shadow: inset 0 1px 3px 0px fade(black, 30%),
+                inset 0 -5px 10px 0px fade(black, 3%);
+    transition: background-color 0.5s;
+}
 
+.player-chip {
     .name {
         display: inline-block;
         margin: 13px 15px;

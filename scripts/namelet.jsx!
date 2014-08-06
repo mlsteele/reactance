@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
 
-var Namelet = require('./namelet.jsx')
+var colorStyleForPlayer = require('./color.js')
 var PT = React.PropTypes
+var cx = React.addons.classSet
 
 var PlayerChip = React.createClass({
     propTypes: {
@@ -10,10 +11,17 @@ var PlayerChip = React.createClass({
 
     render: function() {
         return <div className="player-chip">
-            <Namelet name={this.props.name} />
+            {this.renderNamelet(this.props.name)}
             <span className="name">{this.props.name}</span>
         </div>
     },
+
+    renderNamelet: function(name) {
+        var styles = {'namelet': true}
+        styles[colorStyleForPlayer(name)] = true
+        return <div className={cx(styles)}>{name[0]}</div>
+    },
+
 });
 
 module.exports = PlayerChip
