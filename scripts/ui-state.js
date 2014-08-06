@@ -45,21 +45,18 @@ UIState.actions.changeTab = function({tab}) {
 }
 
 UIState.actions.selectPlayer = function({name}) {
-    console.log('selecting', name)
     this.selectedPlayer = name
     this.selectionConfirmed = false
     this._emitChange()
 }
 
 UIState.actions.confirmPlayer = function({name}) {
-    console.log('confirming', name)
     this.selectedPlayer = name
     this.selectionConfirmed = true
     this._emitChange()
 }
 
 UIState.actions.deselectPlayer = function() {
-    console.log('deselecting')
     this.selectedPlayer = null
     this.selectionConfirmed = false
     this._emitChange()

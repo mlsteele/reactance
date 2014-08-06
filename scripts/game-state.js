@@ -141,7 +141,6 @@ GameState.prototype.assignRoles = function() {
  */
 GameState.prototype.updateRoles = function(clear) {
     if (clear) {
-        console.log('RECLEAR')
         this.roles = null
     }
 
@@ -170,8 +169,6 @@ GameState.actions.addPlayer = function({name}) {
         this.playerNames.push(name)
         this.updateRoles(true)
         this._emitChange()
-    } else {
-        console.log("ignoring duplicate name", name)
     }
 }
 

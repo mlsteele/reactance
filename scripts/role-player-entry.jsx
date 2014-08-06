@@ -26,21 +26,18 @@ var RolePlayerEntry = React.createClass({
     renderButton: function() {
 
         var clickHandler = function() {
-            console.log("click Show");
             this.props.onClickShow(this.props.name)
         }.bind(this);
         var text = "Show role";
 
         if(this.props.confirmed) {
             clickHandler = function() {
-            console.log("click Back");
                 this.props.onClickBack()
             }.bind(this);
             text = "Hide";
         }
         else if (this.props.selected) {
             clickHandler = function() {
-            console.log("click Confirm");
                 this.props.onClickConfirm(this.props.name)
             }.bind(this);
             text = "Are you " + this.props.name + "?";
