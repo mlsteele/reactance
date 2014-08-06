@@ -56,7 +56,7 @@ var MissionPage = React.createClass({
                 <div className="reveal-container">
                     <button className="reveal"
                         onClick={this.props.onReveal}>
-                        Reveal</button>
+                        Show Votes</button>
                 </div>
             </div>
         }
