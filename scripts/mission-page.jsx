@@ -53,7 +53,11 @@ var MissionPage = React.createClass({
                     className="reset"
                     onClick={this.props.onReset} >
                     Reset</button>
-                <button onClick={this.props.onReveal}>Reveal</button>
+                <div className="reveal-container">
+                    <button className="reveal"
+                        onClick={this.props.onReveal}>
+                        Reveal</button>
+                </div>
             </div>
         }
     },
