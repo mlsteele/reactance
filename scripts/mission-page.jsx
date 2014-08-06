@@ -63,7 +63,7 @@ var MissionPage = React.createClass({
     },
 
     renderMissionNumbers: function() {
-        var missionNumbersGivenPlayers = {
+        var playerCountsMapping = {
             5: ["2", "3", "2", "3", "3"],
             6: ["2", "3", "4", "3", "4"],
             7: ["2", "3", "3", "4*", "4"],
@@ -71,27 +71,26 @@ var MissionPage = React.createClass({
             9: ["3", "4", "4", "5*", "5"],
             10: ["3", "4", "4", "5*", "5"],
         }
-        var nums = missionNumbersGivenPlayers[this.props.numPlayers]
+        var playerCounts = playerCountsMapping[this.props.numPlayers]
         var history = this.props.history
-        var numElements = nums.map(function(num){
-            return <span className="num">{num}</span>
-        })
-        for (var i=0; i<history.length; i++) {
-            var passed = history[i]==0 || (history[i]==1 && nums[i].indexOf("*")!=-1)
-            numElements[i] = <span className={cx({
-                'pass': passed,
-                'fail': !passed,
-                'num': true
-            })}>{nums[i]}</span>
-        }
 
-        if (nums !== undefined) {
-            return <div className="mission-numbers">
-                {numElements}
-            </div>
-        } else {
+        if (playerCounts === undefined) {
             return null
         }
+
+        var digits = playerCounts.map(function(n, i) {
+            var played = history.length > i
+            var passed = history[i]==0 || (history[i]==1 && playerCounts[i].indexOf("*")!=-1)
+            return <span key={i} className={cx({
+                'pass': played && passed,
+                'fail': played && !passed,
+                'num': true
+            })}>{playerCounts[i]}</span>
+        })
+
+        return <div className="mission-numbers">
+            {digits}
+        </div>
     },
 
     renderVoteButton: function(pass) {
