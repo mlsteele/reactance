@@ -96,7 +96,7 @@ var MissionPage = React.createClass({
 
     renderVoteButton: function(pass) {
         var label = pass ? "Pass" : "Fail"
-        return <div className="vote-container">
+        return <div key={label} className="vote-container">
             <button
                 className={cx({
                     'pass': pass,
