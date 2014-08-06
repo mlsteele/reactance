@@ -84,7 +84,8 @@ var MissionPage = React.createClass({
             return <span key={i} className={cx({
                 'pass': played && passed,
                 'fail': played && !passed,
-                'num': true
+                'current': history.length ===i,
+                'num': true,
             })}>{playerCounts[i]}</span>
         })
 
