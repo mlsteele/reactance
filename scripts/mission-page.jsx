@@ -1,6 +1,5 @@
 /** @jsx React.DOM */
 
-var PlayerList = require('./player-list.jsx')
 var LabeledNumber = require('./labeled-number.jsx')
 var PT = React.PropTypes
 var cx = React.addons.classSet
