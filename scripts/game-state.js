@@ -132,7 +132,7 @@ GameState.prototype.assignRoles = function() {
         this.roles[oberonName].oberon = true;
     }
 
-    this._emitChange()
+    this.emitChange()
 }
 
 /**
@@ -168,20 +168,20 @@ GameState.actions.addPlayer = function({name}) {
     if (!_.contains(this.playerNames, name)) {
         this.playerNames.push(name)
         this.updateRoles(true)
-        this._emitChange()
+        this.emitChange()
     }
 }
 
 GameState.actions.deletePlayer = function({name}) {
     this.playerNames = _.without(this.playerNames, name)
     this.updateRoles(true)
-    this._emitChange()
+    this.emitChange()
 }
 
 GameState.actions.changeSettings = function({settings}) {
     _.extend(this.settings, settings)
     this.updateRoles(true)
-    this._emitChange()
+    this.emitChange()
 }
 
 GameState.actions.newRoles = function() {

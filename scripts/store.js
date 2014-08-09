@@ -14,7 +14,7 @@ Store.prototype.offChange = function(callback) {
     this._eventer.off('change', callback)
 }
 
-Store.prototype._emitChange = function() {
+Store.prototype.emitChange = function() {
     this._eventer.trigger('change')
 }
 
@@ -22,5 +22,5 @@ Store.mixin = function(obj) {
     var store = new Store()
     obj.onChange = store.onChange.bind(store)
     obj.offChange = store.offChange.bind(store)
-    obj._emitChange = store._emitChange.bind(store)
+    obj.emitChange = store.emitChange.bind(store)
 }

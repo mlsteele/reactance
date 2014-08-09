@@ -36,7 +36,7 @@ MissionState.prototype.load = function() {
 MissionState.prototype.resetMission = function() {
     this.passes = 0
     this.fails = 0
-    this._emitChange()
+    this.emitChange()
 }
 
 MissionState.prototype.resetMissionHistory = function() {
@@ -52,7 +52,7 @@ MissionState.actions.missionVote = function({pass}) {
     } else {
         this.fails += 1
     }
-    this._emitChange()
+    this.emitChange()
 }
 
 MissionState.actions.missionReset = function() {

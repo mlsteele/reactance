@@ -41,40 +41,40 @@ UIState.actions.changeTab = function({tab}) {
     this.tab = tab
     this.selectedPlayer = null
     this.selectionConfirmed = false
-    this._emitChange()
+    this.emitChange()
 }
 
 UIState.actions.selectPlayer = function({name}) {
     this.selectedPlayer = name
     this.selectionConfirmed = false
-    this._emitChange()
+    this.emitChange()
 }
 
 UIState.actions.confirmPlayer = function({name}) {
     this.selectedPlayer = name
     this.selectionConfirmed = true
-    this._emitChange()
+    this.emitChange()
 }
 
 UIState.actions.deselectPlayer = function() {
     this.selectedPlayer = null
     this.selectionConfirmed = false
-    this._emitChange()
+    this.emitChange()
 }
 
 UIState.actions.missionReveal = function() {
     this.missionRevealed = true
-    this._emitChange()
+    this.emitChange()
 }
 
 UIState.actions.missionReset = function() {
     this.missionRevealed = false
-    this._emitChange()
+    this.emitChange()
 }
 
 UIState.actions.newRoles = function() {
     this.tab = 'roles'
     this.selectedPlayer = null
     this.selectionConfirmed = false
-    this._emitChange()
+    this.emitChange()
 }
