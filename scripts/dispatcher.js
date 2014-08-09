@@ -1,3 +1,11 @@
+/**
+ * Flux Dispatcher
+ *
+ * Dispatches actions to listeners registered using onAction.
+ * Actions are deliverd as payloads like
+ *   {action: 'changeSettings', color: color}
+ * The 'action' key is required, all other keys are up to the application.
+ */
 var BackboneEvents = require("backbone-events-standalone");
 
 module.exports = Dispatcher
@@ -24,7 +32,11 @@ Dispatcher.prototype.dispatch = function(action, payload) {
 }
 
 /**
- * Prepare a simple dispatch function
+ * Shorthand to prepare a simple dispatch function.
+ * Does not fire an event, but returns a function that can.
+ * These are equivalent:
+ * dispatcher.bake('changeSetting', 'color')
+ * (color) => { dispatcher.dispatch('changeSetting', {color: color}) }
  */
 Dispatcher.prototype.bake = function(action, field) {
     return function(input) {
@@ -36,10 +48,20 @@ Dispatcher.prototype.bake = function(action, field) {
     }.bind(this)
 }
 
+/**
+ * Register a callback to receive all actions.
+ * Example:
+ * dispatcher.onAction((action) => {
+ *   console.log(`got action of type ${payload.action}`
+ * })
+ */
 Dispatcher.prototype.onAction = function(callback) {
     this._eventer.on('action', callback)
 }
 
+/**
+ * Unregister a callback previously registered with onAction.
+ */
 Dispatcher.prototype.offAction = function(callback) {
     this._eventer.off('action', callback)
 }
