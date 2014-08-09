@@ -4,6 +4,7 @@ module.exports = Store
 
 function Store() {
     this._eventer = BackboneEvents.mixin({})
+    this._emitChangeBatcher = null
 }
 
 /**
@@ -21,12 +22,23 @@ Store.prototype.offChange = function(callback) {
 }
 
 /**
- * Fire a change event for this store.
+ * Fire a change event for this store
  * This should probably only be called by the store itself
  * after it mutates state.
+ *
+ * These are batched using setTimeout.
+ * I don't actually know enough to know whether this is a good idea.
+ * But it's fun to think about.
+ * This is NOT done for performance, but to only emit changes
+ * when the store has settled into a consistent state.
  */
 Store.prototype.emitChange = function() {
-    this._eventer.trigger('change')
+    if (this._emitChangeBatcher === null) {
+        this._emitChangeBatcher = setTimeout(function() {
+            this._eventer.trigger('change')
+            this._emitChangeBatcher = null
+        }.bind(this), 10)
+    }
 }
 
 /**
