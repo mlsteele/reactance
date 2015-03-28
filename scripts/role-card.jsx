@@ -71,8 +71,8 @@ var RoleCard = React.createClass({
 var If = React.createClass({
     propTypes: {
         cond: PT.bool.isRequired,
-        a: PT.component.isRequired,
-        b: PT.component.isRequired,
+        a: PT.element.isRequired,
+        b: PT.element.isRequired,
     },
 
     render: function() {

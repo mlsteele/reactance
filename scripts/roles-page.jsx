@@ -36,7 +36,6 @@ var RolesPage = React.createClass({
         return <ul className="player-list">
             {elements}
         </ul>
-
     },
 
     renderEntry: function(name, selected, confirmed) {

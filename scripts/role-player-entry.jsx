@@ -8,7 +8,7 @@ var RolePlayerEntry = React.createClass({
         name: PT.string.isRequired,
         confirmed: PT.bool.isRequired,
         selected: PT.bool.isRequired,
-        content: PT.component,
+        content: PT.element,
 
         onClickShow: PT.func.isRequired,
         onClickConfirm: PT.func.isRequired,
