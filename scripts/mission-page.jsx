@@ -2,7 +2,7 @@
 
 var LabeledNumber = require('./labeled-number.jsx')
 var PT = React.PropTypes
-var cx = React.addons.classSet
+var cx = classnames
 
 var MissionPage = React.createClass({
     propTypes: {

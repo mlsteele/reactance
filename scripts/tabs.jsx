@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var PT = React.PropTypes
-var cx = React.addons.classSet
+var cx = classnames
 
 var Tabs = React.createClass({
     propTypes: {

@@ -2,7 +2,7 @@
 
 var colorStyleForPlayer = require('./color.js')
 var PT = React.PropTypes
-var cx = React.addons.classSet
+var cx = classnames
 
 var Namelet = React.createClass({
     propTypes: {
