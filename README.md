@@ -16,3 +16,4 @@ Then navigate to index.html in your browser.
 Run `make` to build the js and less bundles.
 Run `make watch` to run the watchers to continuously
 build js and less for development.
+Navigate to `index.html` in your web browser.
