@@ -52,7 +52,7 @@ var renderApp = function() {
         onReset: dispatcher.bake('missionReset'),
     })
 
-    React.renderComponent(
+    React.render(
         Tabs({
             activeTab: uistate.tab,
             onChangeTab: dispatcher.bake('changeTab', 'tab'),
