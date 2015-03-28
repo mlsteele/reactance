@@ -23,7 +23,7 @@ var Tabs = React.createClass({
 
     renderButtons: function() {
         return _.map(this.props.tabs, function(val, name) {
-            return <a 
+            return <a
                 className={cx({
                     'active': this.props.activeTab === name,
                 })}
