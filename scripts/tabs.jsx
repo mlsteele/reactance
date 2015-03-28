@@ -23,13 +23,18 @@ var Tabs = React.createClass({
 
     renderButtons: function() {
         return _.map(this.props.tabs, function(val, name) {
+            var changeTab = function(e) {
+                this.props.onChangeTab(name)
+            }.bind(this)
+
             return <a
                 className={cx({
                     'active': this.props.activeTab === name,
                 })}
                 key={name}
                 data-name={name}
-                onClick={this.props.onChangeTab.bind(null, name)} >
+                onClick={changeTab}
+                onTouchStart={changeTab} >
                 {val.name}</a>
         }.bind(this)) 
     },

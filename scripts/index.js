@@ -66,6 +66,7 @@ var renderApp = function() {
     )
 }
 
+React.initializeTouchEvents(true)
 renderApp()
 uistate.onChange(renderApp)
 gamestate.onChange(renderApp)
