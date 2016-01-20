@@ -5,7 +5,7 @@ module.exports = GameState
 function GameState(dispatcher) {
     Store.mixin(this)
 
-    this.playerNames = ['Miles', 'Jess', 'Brandon', 'Ciara', 'Chris']
+    this.playerNames = ['Miles', 'Jess', 'Andres', 'Carolyn', 'Drück', 'Taylor', 'Akshat']
     this.settings = {
         merlin: true,
         mordred: false,
