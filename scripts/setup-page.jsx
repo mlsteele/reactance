@@ -2,6 +2,7 @@
 
 var SetupPlayerList = require('./setup-player-list.jsx')
 var Settings = require('./settings.jsx')
+var RefLinks = require('./ref-links.jsx')
 var PT = React.PropTypes
 
 var SetupPage = React.createClass({
@@ -26,6 +27,7 @@ var SetupPage = React.createClass({
                 onChangeSettings={this.props.onChangeSettings} />
             <button className="new-game"
                 onClick={this.props.onNewRoles}>New Game</button>
+            <RefLinks />
         </div>
     },
 });
